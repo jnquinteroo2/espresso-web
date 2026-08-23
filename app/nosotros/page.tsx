@@ -83,7 +83,7 @@ function courseJsonLd(clase: ReturnType<typeof getClases>[number]) {
     "@type": "Course",
     name: clase.titulo,
     description: clase.descripcion,
-    provider: { "@type": "Organization", name: "Espresso Coffee Shop", sameAs: "https://schema.org"
+    provider: { "@type": "Organization", name: "Espresso Coffee Shop", sameAs: "https://schema.org" },
     hasCourseInstance: {
       "@type": "CourseInstance",
       courseMode: "onsite",
@@ -94,7 +94,7 @@ function courseJsonLd(clase: ReturnType<typeof getClases>[number]) {
       "@type": "Offer",
       price: clase.precio,
       priceCurrency: "COP",
-      availability: "https://schema.org"
+      availability: "https://schema.org",
     },
   };
 }
@@ -106,8 +106,8 @@ function eventJsonLd(evento: ReturnType<typeof getEventos>[number]) {
     name: evento.titulo,
     startDate: evento.fecha,
     location: { "@type": "Place", name: "Espresso Coffee Shop", address: "Mosquera, Cundinamarca, Colombia" },
-    eventAttendanceMode: "https://schema.org"
-    eventStatus: "https://schema.org"
+    eventAttendanceMode: "https://schema.org",
+    eventStatus: "https://schema.org",
     organizer: { "@type": "Organization", name: "Espresso Coffee Shop" },
   };
 }
@@ -134,7 +134,6 @@ export default function NosotrosPage() {
         />
       ))}
 
-      {}
       <Section className="!pb-12">
         <Container className="max-w-3xl flex flex-col gap-6">
           <MicroLabel>Quiénes somos</MicroLabel>
@@ -150,7 +149,6 @@ export default function NosotrosPage() {
         </Container>
       </Section>
 
-      {}
       <ThemeZone theme="beige" as="section" track>
         <Section>
           <Container className="max-w-3xl mx-auto flex flex-col gap-8">
@@ -174,7 +172,6 @@ export default function NosotrosPage() {
         </Section>
       </ThemeZone>
 
-      {}
       <Section id="academy" className="scroll-mt-[72px] flex flex-col items-center gap-8 text-center !pb-16">
         <BrandIcon name="estrella" size={80} decorative={false} label="Espresso Academy — Master Class Mosquera, todos los sábados" />
         <h2 className="sr-only">Espresso Academy</h2>
@@ -248,7 +245,6 @@ export default function NosotrosPage() {
         </Section>
       </ThemeZone>
 
-      {}
       <ThemeZone theme="ink" as="section" track id="vinyl" className="scroll-mt-[72px]">
         <Section minHeight className="flex flex-col items-center justify-center gap-8 text-center">
           <Container className="flex flex-col items-center gap-6">
@@ -332,7 +328,6 @@ export default function NosotrosPage() {
         )}
       </ThemeZone>
 
-      {}
       <ThemeZone theme="green" as="section" track id="roasting" className="scroll-mt-[72px]">
         <Section className="flex flex-col items-center gap-10 text-center !pb-12">
           <BrandIcon name="reloj" size={80} decorative={false} label="Roasting — Espresso Coffee Shop" />
@@ -383,7 +378,6 @@ export default function NosotrosPage() {
         </ThemeZone>
       </ThemeZone>
 
-      {}
       <ThemeZone theme="beige" as="section" track>
         <Section>
           <Container className="flex flex-col gap-12">
@@ -401,12 +395,10 @@ export default function NosotrosPage() {
         </Section>
       </ThemeZone>
 
-      {}
       <Section>
         <Container className="max-w-2xl flex flex-col gap-4">
           <MicroLabel numeral="06">Equipo</MicroLabel>
           <p className="font-source-sans text-[length:var(--text-body)] leading-[var(--text-body--line-height)] max-w-prose">
-            {}
             El equipo de barra, tueste y Academy trabaja desde el mismo local en Mosquera. Perfil de cada integrante pendiente de confirmar con el cliente.
           </p>
         </Container>
