@@ -43,7 +43,7 @@ export default async function CafeDetailPage({
   const precioMin = Math.min(...cafe.presentaciones.map((p) => p.precio));
 
   const jsonLd = {
-    "@context": "https://schema.org"
+    "@context": "https://schema.org",
     "@type": "Product",
     name: cafe.nombre,
     description: `${cafe.notas.join(", ")} — ${cafe.origen.region}, ${cafe.origen.pais}`,

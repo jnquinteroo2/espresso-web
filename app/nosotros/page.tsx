@@ -79,7 +79,7 @@ const TRAZABILIDAD = [
 
 function courseJsonLd(clase: ReturnType<typeof getClases>[number]) {
   return {
-    "@context": "https://schema.org"
+    "@context": "https://schema.org",
     "@type": "Course",
     name: clase.titulo,
     description: clase.descripcion,
@@ -101,7 +101,7 @@ function courseJsonLd(clase: ReturnType<typeof getClases>[number]) {
 
 function eventJsonLd(evento: ReturnType<typeof getEventos>[number]) {
   return {
-    "@context": "https://schema.org"
+    "@context": "https://schema.org",
     "@type": "Event",
     name: evento.titulo,
     startDate: evento.fecha,
