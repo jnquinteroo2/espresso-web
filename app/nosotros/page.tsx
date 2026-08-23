@@ -79,11 +79,11 @@ const TRAZABILIDAD = [
 
 function courseJsonLd(clase: ReturnType<typeof getClases>[number]) {
   return {
-    "@context": "https:
+    "@context": "https://schema.org"
     "@type": "Course",
     name: clase.titulo,
     description: clase.descripcion,
-    provider: { "@type": "Organization", name: "Espresso Coffee Shop", sameAs: "https:
+    provider: { "@type": "Organization", name: "Espresso Coffee Shop", sameAs: "https://schema.org"
     hasCourseInstance: {
       "@type": "CourseInstance",
       courseMode: "onsite",
@@ -94,20 +94,20 @@ function courseJsonLd(clase: ReturnType<typeof getClases>[number]) {
       "@type": "Offer",
       price: clase.precio,
       priceCurrency: "COP",
-      availability: "https:
+      availability: "https://schema.org"
     },
   };
 }
 
 function eventJsonLd(evento: ReturnType<typeof getEventos>[number]) {
   return {
-    "@context": "https:
+    "@context": "https://schema.org"
     "@type": "Event",
     name: evento.titulo,
     startDate: evento.fecha,
     location: { "@type": "Place", name: "Espresso Coffee Shop", address: "Mosquera, Cundinamarca, Colombia" },
-    eventAttendanceMode: "https:
-    eventStatus: "https:
+    eventAttendanceMode: "https://schema.org"
+    eventStatus: "https://schema.org"
     organizer: { "@type": "Organization", name: "Espresso Coffee Shop" },
   };
 }

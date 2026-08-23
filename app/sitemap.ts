@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getCafes } from "@/lib/data/cafes";
 
-const BASE_URL = "https:
+const BASE_URL = "https://schema.org"
 
 const STATIC_ROUTES = [
   "/",

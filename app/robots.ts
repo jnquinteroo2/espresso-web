@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/styleguide"],
     },
-    sitemap: "https:
+    sitemap: "https://schema.org"
   };
 }
