@@ -58,7 +58,6 @@ function valueOf(cafe: Cafe, key: FacetKey): string[] {
   }
 }
 
-/** Solo valores que de verdad existen en el catálogo — nunca facetas vacías. */
 export function getFacetOptions(cafes: Cafe[], key: FacetKey): string[] {
   const set = new Set<string>();
   for (const cafe of cafes) {

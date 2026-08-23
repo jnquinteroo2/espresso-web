@@ -16,14 +16,17 @@ export function IconRow({
   interactive = false,
   hrefs,
   withSeal = true,
+  gap = "gap-4 md:gap-6",
   className,
   style,
 }: {
   size?: number;
   interactive?: boolean;
   hrefs?: Partial<Record<BrandIconName, string>>;
-  /** Fila de 5 elementos (4 iconos + monograma central, no interactivo) — regla de marca. */
+
   withSeal?: boolean;
+
+  gap?: string;
   className?: string;
   style?: CSSProperties;
 }) {
@@ -58,7 +61,7 @@ export function IconRow({
   }
 
   return (
-    <div className={cn("flex items-center justify-center gap-8 md:gap-12", className)} style={style}>
+    <div className={cn("flex items-center justify-center", gap, className)} style={style}>
       {items}
     </div>
   );

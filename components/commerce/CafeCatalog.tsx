@@ -19,7 +19,6 @@ export function CafeCatalog({ cafes }: { cafes: Cafe[] }) {
   const [filters, setFilters] = useState<Filters>({});
   const [hydrated, setHydrated] = useState(false);
 
-  // Lee el estado inicial de la URL (compartible/recuperable — criterio de aceptación #7).
   useEffect(() => {
     const sp = new URLSearchParams(window.location.search);
     setFilters(filtersFromSearchParams(sp));

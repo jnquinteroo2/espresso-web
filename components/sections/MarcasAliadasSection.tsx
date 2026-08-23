@@ -4,7 +4,6 @@ import { Container } from "@/components/primitives/Container";
 import { Section } from "@/components/primitives/Section";
 import { MicroLabel } from "@/components/primitives/MicroLabel";
 import { DisplayTitle } from "@/components/primitives/DisplayTitle";
-import { BrandOrbit } from "@/components/motion/BrandOrbit";
 import { BrandOrbitFallback } from "@/components/motion/BrandOrbitFallback";
 import { Reveal } from "@/components/motion/Reveal";
 import { getMarcas } from "@/lib/data/marcas";
@@ -18,15 +17,16 @@ export function MarcasAliadasSection() {
         <Reveal as="div">
           <Container className="flex flex-col items-center gap-4">
             <MicroLabel numeral="04">Marcas aliadas</MicroLabel>
+            {}
             <DisplayTitle level={2} id="marcas-heading">
-              Con quién trabajamos
+              Marcas que confían en nosotros
             </DisplayTitle>
           </Container>
         </Reveal>
 
+        {}
         <Reveal as="div" delay={80}>
           <Container>
-            <BrandOrbit marcas={marcas} />
             <BrandOrbitFallback marcas={marcas} />
           </Container>
         </Reveal>

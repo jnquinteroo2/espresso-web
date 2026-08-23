@@ -7,15 +7,10 @@ type ThemeZoneProps<T extends ElementType> = {
   theme: Theme;
   as?: T;
   className?: string;
-  /** Marca esta zona como sección de scroll rastreable por ActiveZoneTracker (Header/ProgressBar la leen vía --active-bg/--active-fg). Usar en las zonas de nivel de página, no en overlays fijos (NavOverlay). */
+
   track?: boolean;
 } & Omit<ComponentPropsWithoutRef<T>, "as" | "className">;
 
-/**
- * Aplica data-theme y redefine --bg/--fg/--muted/--rule para todo el
- * subárbol (ver app/globals.css). Cualquier primitiva colocada dentro
- * invierte de color sin recibir props.
- */
 export function ThemeZone<T extends ElementType = "div">({
   theme,
   as,

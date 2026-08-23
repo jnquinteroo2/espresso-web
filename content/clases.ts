@@ -1,4 +1,4 @@
-// TODO: contenido de ejemplo — reemplazar con datos reales del cliente
+
 import type { Clase } from "./types";
 
 export const clases: Clase[] = [

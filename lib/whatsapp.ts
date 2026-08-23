@@ -1,7 +1,7 @@
 import type { Clase, EventoVinyl } from "@/content/types";
 import type { OrderItem } from "@/lib/store/order";
 
-const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP ?? "";
+const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP ?? "573134047822";
 
 export function formatCOP(value: number): string {
   return new Intl.NumberFormat("es-CO", {
@@ -11,7 +11,6 @@ export function formatCOP(value: number): string {
   }).format(value);
 }
 
-/** Construye la URL wa.me — aislado del resto de la lógica para poder cambiar de adaptador de checkout en el futuro sin tocar UI. */
 export function getWhatsAppUrl(message: string): string {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
@@ -19,8 +18,8 @@ export function getWhatsAppUrl(message: string): string {
 export function buildOrderMessage(items: OrderItem[]): string {
   const lines = items.map((item) => {
     const subtotal = item.precioUnitario * item.cantidad;
-    const detalle = item.detalle ? ` — ${item.detalle}` : "";
-    return `• ${item.nombre}${detalle} × ${item.cantidad} — ${formatCOP(subtotal)}`;
+    const detalle = item.detalle ? ` - ${item.detalle}` : "";
+    return `• ${item.nombre}${detalle} x ${item.cantidad} - ${formatCOP(subtotal)}`;
   });
   const total = items.reduce((sum, i) => sum + i.precioUnitario * i.cantidad, 0);
 

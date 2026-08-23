@@ -1,15 +1,19 @@
 import type { Marca } from "@/content/types";
+import { PLACEHOLDER_ASSETS } from "@/content/brand-assets";
 
-/** Grid estático — siempre en el DOM, visible vía CSS cuando prefers-reduced-motion o sin soporte preserve-3d (ver globals.css). */
 export function BrandOrbitFallback({ marcas }: { marcas: Marca[] }) {
   return (
-    <div data-orbit-fallback className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+
+    <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-8">
       {marcas.map((marca) => (
-        <span
-          key={marca.nombre}
-          className="font-source-sans text-[length:var(--text-label)] uppercase tracking-[0.14em] text-center"
-        >
-          {marca.nombre}
+        <span key={marca.nombre} className="flex w-32 items-center justify-center">
+          {}
+          <img
+            src={PLACEHOLDER_ASSETS.marcaLogoTemp}
+            alt={marca.nombre}
+            className="h-9 w-auto max-w-32 object-contain select-none brand-invert-dark"
+            draggable={false}
+          />
         </span>
       ))}
     </div>

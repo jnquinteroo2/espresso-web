@@ -73,10 +73,7 @@ export function NavOverlay({
         open ? "translate-y-0" : "-translate-y-full pointer-events-none",
       )}
     >
-      {/* Misma geometría que el header (mx-auto max-w-[1440px] px-5 md:px-10
-          lg:px-16, h-[72px]) para que el botón de cierre quede exactamente
-          donde estaba el botón de menú que lo abrió — antes usaba un offset
-          absolute ad-hoc (right-5 top-6 md:right-10) que no coincidía. */}
+      {}
       <div className="sticky top-0 z-10 h-[72px]">
         <div className="mx-auto flex h-full max-w-[1440px] items-center justify-end px-5 md:px-10 lg:px-16">
           <button
@@ -120,11 +117,13 @@ export function NavOverlay({
                   ref={i === 0 ? firstLinkRef : undefined}
                   href={item.href}
                   onClick={onClose}
-                  className="font-garet text-[length:var(--text-h2)] leading-[1.1] hover:opacity-60 transition-opacity"
+
+                  className="font-dinish font-bold text-[length:var(--text-h2)] leading-[1.1] hover:opacity-60 transition-opacity"
                 >
                   {item.label}
+                  {}
                   {item.sublabel && (
-                    <span className="block font-source-sans text-[length:var(--text-micro)] uppercase tracking-[0.18em] text-zone-fg/70">
+                    <span className="block font-garet text-[length:var(--text-micro)] uppercase tracking-[0.18em] text-[#878787]">
                       {item.sublabel}
                     </span>
                   )}
@@ -135,20 +134,24 @@ export function NavOverlay({
 
           <div
             className={cn(
-              "font-source-sans text-[length:var(--text-body)] flex flex-col gap-4 self-end",
+
+              "font-garet text-[length:var(--text-body)] text-[#878787] flex flex-col gap-4 self-end",
               "transition-[opacity,transform] duration-[var(--dur-base)] ease-[var(--ease-out)]",
               open ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0",
             )}
             style={{ transitionDelay: open ? `${120 + NAV_ITEMS.length * 40}ms` : "0ms" }}
           >
             <p>Mosquera, Cundinamarca</p>
-            <p>Mar–dom, 7:00 a.m. – 8:00 p.m.</p>
-            <p>WhatsApp: +57 313 404 7822</p>
+            <p>Lunes a domingo, 10:00 a.m. – 8:00 p.m.</p>
+            <p>WhatsApp: +57 313 4047 822</p>
             <p>@espressocoffeeshop</p>
           </div>
         </nav>
 
+        {}
         <IconRow
+          withSeal={false}
+          gap="gap-14 md:gap-24"
           className={cn(
             "transition-[opacity,transform] duration-[var(--dur-base)] ease-[var(--ease-out)]",
             open ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0",

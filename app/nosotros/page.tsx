@@ -79,11 +79,11 @@ const TRAZABILIDAD = [
 
 function courseJsonLd(clase: ReturnType<typeof getClases>[number]) {
   return {
-    "@context": "https://schema.org",
+    "@context": "https:
     "@type": "Course",
     name: clase.titulo,
     description: clase.descripcion,
-    provider: { "@type": "Organization", name: "Espresso Coffee Shop", sameAs: "https://espressocoffeeshop.co" },
+    provider: { "@type": "Organization", name: "Espresso Coffee Shop", sameAs: "https:
     hasCourseInstance: {
       "@type": "CourseInstance",
       courseMode: "onsite",
@@ -94,20 +94,20 @@ function courseJsonLd(clase: ReturnType<typeof getClases>[number]) {
       "@type": "Offer",
       price: clase.precio,
       priceCurrency: "COP",
-      availability: "https://schema.org/LimitedAvailability",
+      availability: "https:
     },
   };
 }
 
 function eventJsonLd(evento: ReturnType<typeof getEventos>[number]) {
   return {
-    "@context": "https://schema.org",
+    "@context": "https:
     "@type": "Event",
     name: evento.titulo,
     startDate: evento.fecha,
     location: { "@type": "Place", name: "Espresso Coffee Shop", address: "Mosquera, Cundinamarca, Colombia" },
-    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode: "https:
+    eventStatus: "https:
     organizer: { "@type": "Organization", name: "Espresso Coffee Shop" },
   };
 }
@@ -134,7 +134,7 @@ export default function NosotrosPage() {
         />
       ))}
 
-      {/* 1 — Historia (paper) */}
+      {}
       <Section className="!pb-12">
         <Container className="max-w-3xl flex flex-col gap-6">
           <MicroLabel>Quiénes somos</MicroLabel>
@@ -150,7 +150,7 @@ export default function NosotrosPage() {
         </Container>
       </Section>
 
-      {/* 2 — Índice Nuestros proyectos (beige) */}
+      {}
       <ThemeZone theme="beige" as="section" track>
         <Section>
           <Container className="max-w-3xl mx-auto flex flex-col gap-8">
@@ -174,7 +174,7 @@ export default function NosotrosPage() {
         </Section>
       </ThemeZone>
 
-      {/* 3 — Espresso Academy (paper) */}
+      {}
       <Section id="academy" className="scroll-mt-[72px] flex flex-col items-center gap-8 text-center !pb-16">
         <BrandIcon name="estrella" size={80} decorative={false} label="Espresso Academy — Master Class Mosquera, todos los sábados" />
         <h2 className="sr-only">Espresso Academy</h2>
@@ -248,7 +248,7 @@ export default function NosotrosPage() {
         </Section>
       </ThemeZone>
 
-      {/* 4 — Vinyl & Drinks (ink) */}
+      {}
       <ThemeZone theme="ink" as="section" track id="vinyl" className="scroll-mt-[72px]">
         <Section minHeight className="flex flex-col items-center justify-center gap-8 text-center">
           <Container className="flex flex-col items-center gap-6">
@@ -332,7 +332,7 @@ export default function NosotrosPage() {
         )}
       </ThemeZone>
 
-      {/* 5 — Roasting (green) */}
+      {}
       <ThemeZone theme="green" as="section" track id="roasting" className="scroll-mt-[72px]">
         <Section className="flex flex-col items-center gap-10 text-center !pb-12">
           <BrandIcon name="reloj" size={80} decorative={false} label="Roasting — Espresso Coffee Shop" />
@@ -383,7 +383,7 @@ export default function NosotrosPage() {
         </ThemeZone>
       </ThemeZone>
 
-      {/* 6 — Valores (beige) */}
+      {}
       <ThemeZone theme="beige" as="section" track>
         <Section>
           <Container className="flex flex-col gap-12">
@@ -401,12 +401,12 @@ export default function NosotrosPage() {
         </Section>
       </ThemeZone>
 
-      {/* 7 — Equipo (paper) */}
+      {}
       <Section>
         <Container className="max-w-2xl flex flex-col gap-4">
           <MicroLabel numeral="06">Equipo</MicroLabel>
           <p className="font-source-sans text-[length:var(--text-body)] leading-[var(--text-body--line-height)] max-w-prose">
-            {/* TODO: contenido de ejemplo — reemplazar con datos reales del cliente */}
+            {}
             El equipo de barra, tueste y Academy trabaja desde el mismo local en Mosquera. Perfil de cada integrante pendiente de confirmar con el cliente.
           </p>
         </Container>

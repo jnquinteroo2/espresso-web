@@ -10,14 +10,16 @@ import type { CategoriaMethodsShop } from "@/content/types";
 
 export const metadata: Metadata = {
   title: "Methods shop",
-  description: "Equipos y accesorios de café de especialidad: métodos, molinos, tazas y accesorios.",
+  description: "Equipos y accesorios de café de especialidad: molinos, drips, accesorios, merch, tazas y bolsas.",
 };
 
 const CATEGORIAS: { num: string; nombre: string; categoria: CategoriaMethodsShop }[] = [
-  { num: "01", nombre: "Métodos", categoria: "metodos" },
-  { num: "02", nombre: "Molinos", categoria: "molinos" },
-  { num: "03", nombre: "Tazas", categoria: "tazas" },
-  { num: "04", nombre: "Accesorios", categoria: "accesorios" },
+  { num: "01", nombre: "Molinos", categoria: "molinos" },
+  { num: "02", nombre: "Drips", categoria: "drips" },
+  { num: "03", nombre: "Accesorios", categoria: "accesorios" },
+  { num: "04", nombre: "Merch", categoria: "merch" },
+  { num: "05", nombre: "Tazas", categoria: "tazas" },
+  { num: "06", nombre: "Bolsas", categoria: "bolsas" },
 ];
 
 export default function MethodsShopHubPage() {

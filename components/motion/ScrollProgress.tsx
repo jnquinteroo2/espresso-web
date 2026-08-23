@@ -2,11 +2,6 @@
 
 import { useEffect } from "react";
 
-/**
- * UN solo listener de scroll (rAF-throttled) que escribe --scroll-progress
- * en :root. CircularSeal y ProgressBar lo leen desde CSS — sin GSAP,
- * sin ScrollTrigger, sin dependencia. Se monta una vez por página.
- */
 export function ScrollProgress() {
   useEffect(() => {
     const root = document.documentElement;

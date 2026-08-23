@@ -1,10 +1,8 @@
 import { cn } from "@/lib/utils";
+import { BRAND_ASSETS } from "@/content/brand-assets";
 
-/**
- * Wordmark tipográfico: "ESPRESSO" (con macrón sobre la E) + "COFFEE SHOP"
- * debajo, en menor tamaño y tracking más abierto. Renderizado en CSS/SVG,
- * no como imagen — invierte de color heredando currentColor de la zona.
- */
+const sizeToHeight = { sm: 20, md: 32, lg: 48 };
+
 export function Wordmark({
   size = "md",
   className,
@@ -12,24 +10,28 @@ export function Wordmark({
   size?: "sm" | "md" | "lg";
   className?: string;
 }) {
-  const scale = { sm: "text-lg", md: "text-2xl", lg: "text-4xl" }[size];
+  const height = sizeToHeight[size];
   return (
-    <div className={cn("inline-flex flex-col items-center leading-none", className)}>
-      <span
-        className={cn(
-          "font-garet font-semibold uppercase tracking-[0.14em] relative inline-block",
-          scale,
-        )}
-      >
-        <span className="relative">
-          <span aria-hidden="true" className="absolute left-[0.02em] -top-[0.16em] w-[0.62em] h-[2px] bg-current" />
-          ESPRESSO
-        </span>
-      </span>
-      <span className="font-source-sans text-[length:var(--text-micro)] uppercase tracking-[0.32em] font-medium mt-1.5">
-        <span className="sr-only"> </span>
-        Coffee Shop
-      </span>
-    </div>
+    <span
+      role="img"
+      aria-label="Espresso Coffee Shop"
+      className={cn("relative inline-block select-none", className)}
+      style={{ height, width: height * 3.6 }}
+    >
+      <img
+        src={BRAND_ASSETS.wordmarkNegro}
+        alt=""
+        aria-hidden="true"
+        className="brand-asset-negro h-full w-full object-contain object-left select-none pointer-events-none"
+        draggable={false}
+      />
+      <img
+        src={BRAND_ASSETS.wordmarkBlanco}
+        alt=""
+        aria-hidden="true"
+        className="brand-asset-blanco h-full w-full object-contain object-left select-none pointer-events-none"
+        draggable={false}
+      />
+    </span>
   );
 }

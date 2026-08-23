@@ -1,13 +1,13 @@
-// TODO: contenido de ejemplo — reemplazar con datos reales del cliente
+
 import type { MethodsShopItem } from "./types";
 
 export const methodsShopItems: MethodsShopItem[] = [
-  // Métodos
+
   {
     slug: "hario-v60-dripper-02",
     nombre: "V60 Dripper 02",
     marca: "Hario",
-    categoria: "metodos",
+    categoria: "drips",
     precio: 89000,
     imagen: "/img/methods-shop/hario-v60.jpg",
     descripcion: "El método que más usamos en la barra para filtrados de un solo origen.",
@@ -17,7 +17,7 @@ export const methodsShopItems: MethodsShopItem[] = [
     slug: "chemex-6-cup",
     nombre: "Chemex 6 tazas",
     marca: "Chemex",
-    categoria: "metodos",
+    categoria: "drips",
     precio: 245000,
     imagen: "/img/methods-shop/chemex.jpg",
     descripcion: "Cuerpo entero, taza limpia. Lo recomendamos para perfiles claros.",
@@ -27,7 +27,7 @@ export const methodsShopItems: MethodsShopItem[] = [
     slug: "kalita-wave-155",
     nombre: "Wave 155",
     marca: "Kalita",
-    categoria: "metodos",
+    categoria: "drips",
     precio: 165000,
     imagen: "/img/methods-shop/kalita-wave.jpg",
     descripcion: "Fondo plano, extracción más pareja. Bueno para empezar en filtrados.",
@@ -37,13 +37,13 @@ export const methodsShopItems: MethodsShopItem[] = [
     slug: "aeropress-original",
     nombre: "AeroPress Original",
     marca: "AeroPress",
-    categoria: "metodos",
+    categoria: "drips",
     precio: 195000,
     imagen: "/img/methods-shop/aeropress.jpg",
     descripcion: "El que nos llevamos de viaje. Rápido y fácil de limpiar.",
     stock: true,
   },
-  // Molinos
+
   {
     slug: "comandante-c40-mk4",
     nombre: "C40 MK4",
@@ -84,7 +84,7 @@ export const methodsShopItems: MethodsShopItem[] = [
     descripcion: "Manual, muela cónica. Lo usamos para espresso en casa.",
     stock: false,
   },
-  // Tazas
+
   {
     slug: "taza-espresso-90ml",
     nombre: "Taza espresso 90 ml",
@@ -125,7 +125,7 @@ export const methodsShopItems: MethodsShopItem[] = [
     descripcion: "Para catar en casa como catamos en la barra.",
     stock: true,
   },
-  // Accesorios
+
   {
     slug: "timemore-black-mirror",
     nombre: "Black Mirror Basic",

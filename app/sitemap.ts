@@ -1,21 +1,20 @@
 import type { MetadataRoute } from "next";
 import { getCafes } from "@/lib/data/cafes";
 
-const BASE_URL = "https://espressocoffeeshop.co";
+const BASE_URL = "https:
 
-// 1 home + 6 subpáginas + detalle de café/methods-shop + legales. Nada más
-// (addendum-05): Academy, Vinyl & Drinks y Roasting viven como anclas dentro
-// de /nosotros, Carta como ancla dentro de /contacto — no tienen URL propia.
 const STATIC_ROUTES = [
   "/",
   "/nosotros",
   "/cafe",
   "/suscripcion",
   "/methods-shop",
-  "/methods-shop/metodos",
   "/methods-shop/molinos",
-  "/methods-shop/tazas",
+  "/methods-shop/drips",
   "/methods-shop/accesorios",
+  "/methods-shop/merch",
+  "/methods-shop/tazas",
+  "/methods-shop/bolsas",
   "/marcas-aliadas",
   "/contacto",
   "/legal/privacidad",

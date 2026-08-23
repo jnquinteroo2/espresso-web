@@ -4,13 +4,6 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { FACET_LABELS, type FacetKey, type Filters } from "@/lib/cafe-facets";
 
-/**
- * Filtro estilo drawer (inspirado en onyxcoffeelab.com/collections/coffee):
- * un único disparador "Filtrar" abre un panel deslizante desde la derecha
- * con todas las facetas visibles (sin acordeones anidados), conteo de
- * resultados en vivo y un cierre en la parte inferior. Reemplaza el patrón
- * anterior de 8 <details> en paralelo, señalado como poco intuitivo.
- */
 export function FilterBar({
   options,
   filters,
@@ -30,7 +23,6 @@ export function FilterBar({
     (filters[key] ?? []).map((value) => ({ key, value })),
   );
 
-  // El panel bloquea el scroll de fondo mientras está abierto.
   useEffect(() => {
     if (!open) return;
     const prevOverflow = document.body.style.overflow;
@@ -98,7 +90,7 @@ export function FilterBar({
         )}
       </div>
 
-      {/* Scrim */}
+      {}
       <div
         aria-hidden="true"
         onClick={() => setOpen(false)}
@@ -108,7 +100,7 @@ export function FilterBar({
         )}
       />
 
-      {/* Drawer */}
+      {}
       <div
         role="dialog"
         aria-modal="true"

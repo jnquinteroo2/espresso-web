@@ -12,10 +12,12 @@ import { formatCOP } from "@/lib/whatsapp";
 import type { CategoriaMethodsShop } from "@/content/types";
 
 const CATEGORIAS: Record<CategoriaMethodsShop, string> = {
-  metodos: "Métodos",
   molinos: "Molinos",
-  tazas: "Tazas",
+  drips: "Drips",
   accesorios: "Accesorios",
+  merch: "Merch",
+  tazas: "Tazas",
+  bolsas: "Bolsas",
 };
 
 export function generateStaticParams() {

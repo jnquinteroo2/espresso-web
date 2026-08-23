@@ -16,7 +16,7 @@ export default function PrivacidadPage() {
           <DisplayTitle level={1} className="text-[clamp(32px,5vw,56px)]">
             Política de privacidad
           </DisplayTitle>
-          {/* TODO: contenido de ejemplo — reemplazar con el texto legal real, revisado por el cliente/abogado antes de producción */}
+          {}
           <div className="font-source-sans text-[length:var(--text-body)] leading-[var(--text-body--line-height)] flex flex-col gap-4 max-w-prose">
             <p>
               Espresso Coffee Shop recopila los datos que el usuario entrega voluntariamente al hacer un pedido por WhatsApp o al suscribirse al boletín de correo (nombre, dirección de entrega y correo electrónico). Estos datos se usan únicamente para procesar el pedido o el envío del boletín.

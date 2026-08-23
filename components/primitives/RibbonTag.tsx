@@ -6,7 +6,6 @@ type RibbonTagProps = {
   className?: string;
 };
 
-/** Cinta vino rotada — solo estado de producto y Vinyl & Drinks. Presupuesto: máx 2% del área visible. */
 export function RibbonTag({ text, rotation = -7, className }: RibbonTagProps) {
   return (
     <span

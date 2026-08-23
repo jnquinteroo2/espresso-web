@@ -2,12 +2,6 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-/* ==========================================================================
-   ESPRESSO COFFEE SHOP — Design tokens
-   Ver docs/BRAND.md y docs/DESIGN_SYSTEM.md. Congelado: no usar paleta
-   default de Tailwind en ningún componente.
-   ========================================================================== */
-
 :root {
   /* Marca — primarios/secundarios/soporte */
   --ink: #000000;
@@ -105,10 +99,18 @@
   --radius-none: var(--r-none);
   --radius-pill: var(--r-pill);
 
-  /* Fuentes */
+  /* Fuentes — corrección 2026-08-23 (octava tanda): "los tipos de letra
+     son DIN Alternate Bold y Garet Book... para los textos grandes [DIN] y
+     los subtextos en garet gris #878787 [Garet]" — aclara y reemplaza la
+     corrección anterior (que había colapsado las 3 fuentes en una sola).
+     Son 2 fuentes reales, cada una con un rol fijo, sin una tercera
+     variante: font-dinish vuelve a ser DINish real (textos grandes:
+     títulos, nombres de producto, precios, numerales) y font-source-sans
+     se pliega sobre font-garet (subtextos: párrafos, etiquetas, notas —
+     ver componentes para el color gris #878787 aplicado aparte). */
   --font-garet: var(--font-garet);
   --font-dinish: var(--font-dinish), var(--font-archivo), "Barlow", sans-serif;
-  --font-source-sans: var(--font-source-sans);
+  --font-source-sans: var(--font-garet);
 
   /* Escala tipográfica fluida */
   --text-micro: clamp(10px, 0.68vw, 11px);
@@ -127,8 +129,9 @@
   --text-h1--line-height: 0.95;
   --text-numeral: clamp(40px, 6vw, 92px);
   --text-numeral--line-height: 0.9;
-
-  /* Spacing scale de marca (además de la default de Tailwind) */
+  --text-kicker: 14px;
+  --text-desc: clamp(15px, 1.1vw, 18px);
+  --text-note: clamp(11px, 0.8vw, 12px);
   --spacing-section: clamp(80px, 11vh, 176px);
 
   /* Breakpoints */
@@ -162,6 +165,14 @@ body {
 
 .rounded-pill {
   border-radius: var(--r-pill) !important;
+}
+
+/* Corrección 2026-08-23: esquina superior izquierda redondeada en las fotos
+   de producto de "Lotes de temporada" (mockup de referencia) — segunda
+   excepción puntual a la regla de "sin esquinas redondas", igual que
+   .rounded-pill. */
+.rounded-card-photo {
+  border-top-left-radius: 64px !important;
 }
 
 /* Foco — nunca se elimina, visible en todas las zonas */
@@ -213,18 +224,6 @@ body {
   }
 }
 
-/* Letter-reveal (hero) — sin SplitText/GSAP, spans + animation-delay por índice */
-@keyframes letter-in {
-  from {
-    opacity: 0;
-    transform: translateY(0.15em);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
 /* Indicador de scroll del hero */
 @keyframes scroll-hint {
   0%, 100% { transform: scaleY(1); opacity: 0.4; }
@@ -243,6 +242,30 @@ body {
     opacity: 1;
     transform: none;
   }
+}
+
+.brand-asset-negro {
+  display: block;
+}
+.brand-asset-blanco {
+  display: none;
+}
+[data-theme="blue"] .brand-asset-negro,
+[data-theme="green"] .brand-asset-negro,
+[data-theme="ink"] .brand-asset-negro {
+  display: none;
+}
+[data-theme="blue"] .brand-asset-blanco,
+[data-theme="green"] .brand-asset-blanco,
+[data-theme="ink"] .brand-asset-blanco {
+  display: block;
+}
+
+/* Monograma "Ē" — un solo archivo (negro); se invierte a blanco en zonas oscuras. */
+[data-theme="blue"] .brand-invert-dark,
+[data-theme="green"] .brand-invert-dark,
+[data-theme="ink"] .brand-invert-dark {
+  filter: invert(1);
 }
 
 /* BrandOrbit — carrusel 3D CSS puro con fallback a grid estático */

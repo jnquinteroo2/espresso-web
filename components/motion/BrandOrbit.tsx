@@ -2,18 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { Marca } from "@/content/types";
+import { PLACEHOLDER_ASSETS } from "@/content/brand-assets";
 
-const DEG_PER_SEC = (0.15 * 180) / Math.PI; // 0.15 rad/s -> ~8.6deg/s
+const DEG_PER_SEC = (0.15 * 180) / Math.PI; 
 const RADIUS = 320;
 
-/**
- * Carrusel 3D en CSS puro (transform-style: preserve-3d), sin Three.js.
- * Auto-rotación lenta, arrastrable con puntero, flechas de teclado rotan
- * 30°/pulsación. Fallback a grid estático vía CSS ([data-orbit-fallback],
- * reglas en globals.css) cuando prefers-reduced-motion o sin soporte de
- * preserve-3d — el fallback siempre está en el DOM, esto solo maneja la
- * versión interactiva.
- */
 export function BrandOrbit({ marcas }: { marcas: Marca[] }) {
   const [rotation, setRotation] = useState(0);
   const draggingRef = useRef(false);
@@ -94,9 +87,13 @@ export function BrandOrbit({ marcas }: { marcas: Marca[] }) {
               transform: `rotateY(${i * angleStep}deg) translateZ(${RADIUS}px)`,
             }}
           >
-            <span className="font-source-sans text-[length:var(--text-label)] uppercase tracking-[0.14em]">
-              {marca.nombre}
-            </span>
+            {}
+            <img
+              src={PLACEHOLDER_ASSETS.marcaLogoTemp}
+              alt={marca.nombre}
+              className="h-9 w-auto max-w-32 object-contain select-none brand-invert-dark"
+              draggable={false}
+            />
           </div>
         ))}
       </div>

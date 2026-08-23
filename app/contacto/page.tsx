@@ -40,8 +40,8 @@ export default function ContactoPage() {
             <SpecTable
               rows={[
                 { label: "Dirección", value: "Mosquera, Cundinamarca, Colombia" },
-                { label: "Horario", value: "Mar–dom, 7:00 a.m. – 8:00 p.m." },
-                { label: "WhatsApp", value: "+57 313 404 7822" },
+                { label: "Horario", value: "Lunes a domingo, 10:00 a.m. – 8:00 p.m." },
+                { label: "WhatsApp", value: "+57 313 4047 822" },
                 { label: "Instagram", value: "@espressocoffeeshop" },
               ]}
             />
@@ -65,7 +65,7 @@ export default function ContactoPage() {
           </div>
 
           <div className="lg:col-span-6">
-            {/* TODO: contenido de ejemplo — reemplazar con embed real del mapa (Google Maps/Mapbox, estilo monocromo) una vez el cliente confirme la dirección exacta */}
+            {}
             <div className="aspect-square w-full bg-zone-fg/[0.04] flex items-center justify-center">
               <span className="font-source-sans text-[length:var(--text-micro)] uppercase tracking-[0.18em] text-zone-fg">
                 Mapa — pendiente de dirección exacta

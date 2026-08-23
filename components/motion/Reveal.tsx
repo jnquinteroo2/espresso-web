@@ -11,7 +11,6 @@ type RevealProps<T extends ElementType> = {
   className?: string;
 } & Omit<ComponentPropsWithoutRef<T>, "as" | "className">;
 
-/** Entrada al viewport vía IntersectionObserver compartido (sin Framer Motion). */
 export function Reveal<T extends ElementType = "div">({
   as,
   delay = 0,

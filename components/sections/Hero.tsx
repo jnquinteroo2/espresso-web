@@ -4,37 +4,30 @@ import { Section } from "@/components/primitives/Section";
 import { Hairline } from "@/components/primitives/Hairline";
 import { MetaBar } from "@/components/layout/MetaBar";
 import { HeroWordmark } from "@/components/brand/HeroWordmark";
-import { BlurEcho } from "@/components/brand/BlurEcho";
-// Componente cliente ('use client') — Next separa el boundary solo, no hace
-// falta next/dynamic: HeroVideoLayer ya se guarda a sí mismo (retorna null
-// sin VIDEO_SRC/POSTER_SRC, mismo resultado en servidor y cliente, cero
-// riesgo de hydration mismatch ni de competir por el LCP).
+
 import { HeroVideoLayer } from "@/components/sections/HeroVideoLayer";
 
-/**
- * Zona paper, wordmark en negro server-rendered (es el elemento LCP).
- * Único BlurEcho de la home (regla de marca: máx. 1 por página).
- */
 export function Hero() {
   return (
     <ThemeZone theme="paper" as="section" track aria-labelledby="hero-heading" className="relative overflow-hidden">
       <HeroVideoLayer />
 
       <Section minHeight className="relative z-10 !py-0 flex flex-col justify-between">
-        <MetaBar left="Mosquera · Cundinamarca" right="Tostamos los martes" />
+        {}
+        <MetaBar left="Mosquera · Cundinamarca" />
 
         <Container className="flex flex-1 items-center justify-center gap-6 md:gap-12">
           <div className="hidden md:flex flex-1 items-center gap-4 justify-end">
+            {}
             <span className="font-source-sans text-[length:var(--text-label)] uppercase tracking-[0.18em] whitespace-nowrap">
-              Cold Brew
+              Crow Brew
             </span>
             <Hairline className="flex-1" />
           </div>
 
+          {}
           <h1 id="hero-heading" className="shrink-0">
-            <BlurEcho blur={22} offset={12} opacity={0.28}>
-              <HeroWordmark />
-            </BlurEcho>
+            <HeroWordmark />
           </h1>
 
           <a

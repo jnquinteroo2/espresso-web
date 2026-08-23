@@ -1,12 +1,5 @@
 export type DrinkIconName = "copa-martini" | "tiki" | "copa-spritz" | "copa-vino" | "pera" | "queso";
 
-/**
- * Glifos de la carta de Vinyl & Drinks — no son parte del set propietario
- * de 4 iconos (arco/asterisco/reloj/estrella), así que se dibujan como
- * familia propia y consistente (stroke=currentColor, sin relleno) en vez
- * de mezclar con Lucide dentro del mismo grupo visual (regla de marca:
- * nunca mezclar dos familias de iconos en un mismo grupo).
- */
 function Shape({ name }: { name: DrinkIconName }) {
   switch (name) {
     case "copa-martini":

@@ -16,7 +16,7 @@ export default function TerminosPage() {
           <DisplayTitle level={1} className="text-[clamp(32px,5vw,56px)]">
             Términos y condiciones
           </DisplayTitle>
-          {/* TODO: contenido de ejemplo — reemplazar con el texto legal real, revisado por el cliente/abogado antes de producción */}
+          {}
           <div className="font-source-sans text-[length:var(--text-body)] leading-[var(--text-body--line-height)] flex flex-col gap-4 max-w-prose">
             <p>
               Los pedidos hechos a través de espressocoffeeshop.co se confirman por WhatsApp. Los precios están expresados en pesos colombianos (COP) e incluyen IVA cuando aplique.

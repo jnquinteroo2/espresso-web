@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 type CircularSealProps = {
   text: string;
   icon?: BrandIconName;
-  /** Icono no propietario (ej. carta de Vinyl & Drinks) — reemplaza `icon`. Debe ser un SVG stroke=currentColor del mismo tamaño que BrandIcon para verse consistente. */
+
   iconNode?: ReactNode;
   size?: number;
   rotateOnScroll?: boolean;
@@ -13,22 +13,8 @@ type CircularSealProps = {
   className?: string;
 };
 
-/** Bajo este tamaño el texto en trayectoria es ilegible — addendum-06 fix 2. */
 const TEXT_MIN_SIZE = 120;
 
-/**
- * Sello circular — texto en trayectoria vía SVG textPath. Rota ligado al
- * scroll leyendo la custom property global --scroll-progress (un único
- * ScrollTrigger la escribe; N sellos la consumen sin JS adicional). El
- * icono central se contra-rota para permanecer legible, salvo el
- * asterisco, que gira con el sello.
- *
- * Por debajo de 120px el texto en trayectoria se vuelve ilegible (se leía
- * como un arco punteado roto, no como un sello) — en ese rango se renderiza
- * solo la Ē centrada dentro de un círculo de filete limpio, sin texto ni
- * icono. El aria-label con el texto completo se mantiene siempre, en los
- * dos casos.
- */
 export function CircularSeal({
   text,
   icon,

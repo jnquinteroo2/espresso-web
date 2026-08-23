@@ -1,12 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-/**
- * Carrito genérico — cualquier producto de la tienda (café, methods shop...)
- * cabe en esta forma. `detalle` es una línea descriptiva libre para la
- * variante elegida (ej. "250 g · Espresso" en café, o la marca en methods
- * shop); `href` permite volver al producto desde el carrito.
- */
 export type OrderItem = {
   id: string;
   slug: string;
@@ -64,14 +58,12 @@ export const useOrderStore = create<OrderState>()(
     }),
     {
       name: "espresso-order",
-      // Solo persistimos los productos entre visitas — isCartOpen es estado
-      // de UI efímero, no debe "recordar" el panel abierto al recargar.
+
       partialize: (state) => ({ items: state.items }),
     },
   ),
 );
 
-/** Id estable por producto + variante — mismo slug con distinta variante son líneas distintas del carrito. */
 export function orderItemId(slug: string, variante = ""): string {
   return variante ? `${slug}-${variante}` : slug;
 }

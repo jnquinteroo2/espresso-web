@@ -26,8 +26,9 @@ export default function MarcasAliadasPage() {
       <Section className="flex flex-col items-center gap-4 text-center !pb-12">
         <Container className="flex flex-col items-center gap-4">
           <MicroLabel numeral="04">Marcas aliadas</MicroLabel>
+          {}
           <DisplayTitle level={1} className="text-[clamp(40px,6vw,72px)]">
-            Con quién trabajamos
+            Marcas que confían en nosotros
           </DisplayTitle>
         </Container>
       </Section>

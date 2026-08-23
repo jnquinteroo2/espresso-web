@@ -7,7 +7,7 @@ export type Origen = {
   region: string;
   finca: string;
   productor: string;
-  altura: number; // msnm
+  altura: number; 
   variedad: string;
   proceso: string;
 };
@@ -22,7 +22,7 @@ export type Preparacion = {
 
 export type Presentacion = {
   gramos: number;
-  precio: number; // COP
+  precio: number; 
 };
 
 export type Cafe = {
@@ -41,13 +41,13 @@ export type Cafe = {
   moliendas: string[];
   fechaTueste: string;
   estado: EstadoProducto;
-  /** Fondo plano de ProductCard — texto del código siempre en beige encima. Nunca beige/paper (invisible contra la sección, que es zona beige) ni wine (exclusivo de RibbonTag/Vinyl & Drinks). */
+
   colorBloque: "#000000" | "#072230" | "#0A302B";
   imagen: string;
   preparacion: Preparacion[];
 };
 
-export type CategoriaMethodsShop = "metodos" | "molinos" | "tazas" | "accesorios";
+export type CategoriaMethodsShop = "molinos" | "drips" | "accesorios" | "merch" | "tazas" | "bolsas";
 
 export type MethodsShopItem = {
   slug: string;
@@ -65,7 +65,7 @@ export type AreaClase = "barismo" | "latte-art" | "sensorial" | "filtrado";
 export type Clase = {
   slug: string;
   fecha: string;
-  dia: string; // numeral DIN
+  dia: string; 
   mes: string;
   titulo: string;
   descripcion: string;

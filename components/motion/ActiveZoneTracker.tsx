@@ -1,23 +1,17 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
-/**
- * Detecta qué [data-zone-track] section está bajo la línea del header
- * (72px desde arriba) y copia sus --bg/--fg a --active-bg/--active-fg en
- * :root. Header y ProgressBar leen esas variables para invertir con la
- * zona real que hay debajo — sin esto el header queda fijo en la zona por
- * defecto (paper) sin importar qué se scrollee debajo.
- */
 const HEADER_HEIGHT = 72;
 
 export function ActiveZoneTracker() {
+  const pathname = usePathname();
+
   useEffect(() => {
     const root = document.documentElement;
-    const sections = Array.from(
-      document.querySelectorAll<HTMLElement>("[data-zone-track]"),
-    );
-    if (sections.length === 0) return;
+    let sections: HTMLElement[] = [];
+    let ticking = false;
 
     function applyFrom(el: Element) {
       const cs = getComputedStyle(el);
@@ -25,25 +19,44 @@ export function ActiveZoneTracker() {
       root.style.setProperty("--active-fg", cs.getPropertyValue("--fg"));
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter((e) => e.isIntersecting);
-        if (visible.length === 0) return;
-        // El más alto en el documento entre los que cruzan la línea es la zona activa.
-        visible.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-        applyFrom(visible[0].target);
-      },
-      {
-        rootMargin: `-${HEADER_HEIGHT}px 0px -${typeof window !== "undefined" ? window.innerHeight - HEADER_HEIGHT - 1 : 0}px 0px`,
-        threshold: 0,
-      },
-    );
+    function update() {
+      ticking = false;
+      if (sections.length === 0) return;
+      const line = HEADER_HEIGHT + 1;
 
-    sections.forEach((s) => observer.observe(s));
-    applyFrom(sections[0]);
+      let current: HTMLElement | null = null;
+      for (const s of sections) {
+        const rect = s.getBoundingClientRect();
+        if (rect.top <= line && rect.bottom > line) {
+          current = s;
+          break;
+        }
+      }
+      if (!current) {
 
-    return () => observer.disconnect();
-  }, []);
+        const first = sections[0];
+        current = first.getBoundingClientRect().top > line ? first : sections[sections.length - 1];
+      }
+      applyFrom(current);
+    }
+
+    function onScrollOrResize() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+
+    sections = Array.from(document.querySelectorAll<HTMLElement>("[data-zone-track]"));
+    update();
+
+    window.addEventListener("scroll", onScrollOrResize, { passive: true });
+    window.addEventListener("resize", onScrollOrResize);
+
+    return () => {
+      window.removeEventListener("scroll", onScrollOrResize);
+      window.removeEventListener("resize", onScrollOrResize);
+    };
+  }, [pathname]);
 
   return null;
 }

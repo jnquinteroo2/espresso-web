@@ -4,11 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { ButtonOutline } from "@/components/primitives/ButtonOutline";
 import { useOrderStore, orderItemId } from "@/lib/store/order";
 
-/**
- * Botón de "Añadir al carrito" genérico — para productos sin variantes
- * (methods shop). Café usa su propio flujo en CafePurchase (presentación +
- * molienda + cantidad antes de añadir).
- */
 export function AddToCartButton({
   slug,
   nombre,

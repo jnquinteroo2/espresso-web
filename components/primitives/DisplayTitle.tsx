@@ -16,7 +16,7 @@ const levelTag: Record<1 | 2 | 3, ElementType> = { 1: "h1", 2: "h2", 3: "h3" };
 
 export function DisplayTitle({
   level = 2,
-  font = "garet",
+  font = "din",
   className,
   children,
   ...props
@@ -25,7 +25,8 @@ export function DisplayTitle({
   return (
     <Comp
       className={cn(
-        font === "din" ? "font-dinish" : "font-garet",
+
+        font === "garet" ? "font-garet" : "font-dinish",
         levelStyles[level],
         className,
       )}

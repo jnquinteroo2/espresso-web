@@ -3,12 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { Monogram } from "@/components/brand/Monogram";
 import { cn } from "@/lib/utils";
 import { useOrderStore, selectTotalItems } from "@/lib/store/order";
+import { BRAND_ASSETS } from "@/content/brand-assets";
 
-// Code-split: el menú a pantalla completa y el carrito no deben pesar en el
-// First Load JS de ninguna ruta — solo se cargan cuando se abren.
 const NavOverlay = dynamic(
   () => import("@/components/layout/NavOverlay").then((m) => m.NavOverlay),
   { ssr: false },
@@ -28,10 +26,7 @@ export function Header() {
   const [cartHasOpened, setCartHasOpened] = useState(false);
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
-  // Ajuste de estado durante el render (no en un efecto): en cuanto el carrito
-  // se abre por primera vez —desde cualquier página, vía el store global—
-  // lo montamos y se queda montado. Guardado con !cartHasOpened para no
-  // reprogramar en cada render.
+
   if (isCartOpen && !cartHasOpened) {
     setCartHasOpened(true);
   }
@@ -45,7 +40,14 @@ export function Header() {
             aria-label="Espresso Coffee Shop — inicio"
             className="flex items-center hover:opacity-60 transition-opacity"
           >
-            <Monogram size={38} />
+            {}
+            <img
+              src={BRAND_ASSETS.selloCircular}
+              alt=""
+              aria-hidden="true"
+              className="h-14 w-14 object-contain select-none pointer-events-none"
+              draggable={false}
+            />
           </Link>
 
           <div className="flex items-center gap-6">
@@ -74,9 +76,10 @@ export function Header() {
                 <circle cx="17" cy="20" r="1.4" fill="currentColor" stroke="none" />
               </svg>
               {mounted && totalItems > 0 && (
+
                 <span
                   aria-hidden="true"
-                  className="absolute -top-1 -right-1 flex h-4 min-w-4 items-center justify-center bg-active-fg px-1 font-dinish text-[9px] text-active-bg"
+                  className="rounded-pill absolute -top-1 -right-1 flex h-4 min-w-4 items-center justify-center bg-seal px-1 font-dinish text-[9px] text-beige"
                 >
                   {totalItems}
                 </span>
@@ -88,11 +91,7 @@ export function Header() {
               type="button"
               onClick={() => {
                 if (!hasOpened) {
-                  // Primera apertura: monta el overlay cerrado y dispara la
-                  // transición en el frame siguiente (doble rAF para
-                  // garantizar el flush del estilo inicial) — si se abre
-                  // con setOpen(true) en el mismo evento, React agrupa
-                  // ambas actualizaciones y el overlay aparece sin animar.
+
                   setHasOpened(true);
                   requestAnimationFrame(() => {
                     requestAnimationFrame(() => setOpen(true));

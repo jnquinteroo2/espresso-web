@@ -6,13 +6,6 @@ import { cn } from "@/lib/utils";
 import { getWhatsAppUrl, buildOrderMessage, formatCOP } from "@/lib/whatsapp";
 import { useOrderStore, selectTotalPrecio } from "@/lib/store/order";
 
-/**
- * Panel de carrito — mismo patrón de drawer que el de filtros en /cafe
- * (scrim + panel desde la derecha), pero global: vive en el layout raíz vía
- * Header, así que cualquier "Añadir al carrito" en cualquier página puede
- * abrirlo. El checkout arma un único mensaje de WhatsApp con todo el
- * carrito y lo vacía al enviarlo.
- */
 export function CartDrawer() {
   const isOpen = useOrderStore((s) => s.isCartOpen);
   const close = useOrderStore((s) => s.closeCart);
@@ -22,14 +15,8 @@ export function CartDrawer() {
   const clear = useOrderStore((s) => s.clear);
   const total = useOrderStore(selectTotalPrecio);
 
-  // El overlay puede montarse ya abierto (ej. al "Añadir al carrito" desde
-  // otra página) — sin este desfase de doble rAF, React agrupa el montaje y
-  // el estado "abierto" en el mismo frame y el panel aparece sin animar.
   const [visible, setVisible] = useState(false);
 
-  // Cierre: ajuste de estado durante el render, no en un efecto — "visible"
-  // ya venía en true de la apertura anterior, no hay problema de montaje
-  // agrupado que resolver acá, así que no hace falta esperar un frame.
   if (!isOpen && visible) {
     setVisible(false);
   }
@@ -73,7 +60,7 @@ export function CartDrawer() {
 
   return (
     <>
-      {/* Scrim */}
+      {}
       <div
         aria-hidden="true"
         onClick={close}
@@ -83,7 +70,7 @@ export function CartDrawer() {
         )}
       />
 
-      {/* Panel */}
+      {}
       <div
         role="dialog"
         aria-modal="true"

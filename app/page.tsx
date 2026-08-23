@@ -7,7 +7,6 @@ import { RoastingSection } from "@/components/sections/RoastingSection";
 import { ScrollProgress } from "@/components/motion/ScrollProgress";
 import { ProgressBar } from "@/components/motion/ProgressBar";
 
-// Partitura cromática: paper → beige → blue → paper → green → ink
 export default function Home() {
   return (
     <>

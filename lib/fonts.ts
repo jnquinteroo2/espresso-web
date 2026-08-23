@@ -1,13 +1,6 @@
 import localFont from "next/font/local";
 import { Outfit, Archivo, Source_Sans_3 } from "next/font/google";
 
-/**
- * PRINCIPAL — placeholder. Garet Book es Free For Commercial Use (Type
- * Forward), no hay bloqueo de licencia ni depende del cliente — falta
- * descargar el archivo. Swap: reemplazar este bloque por
- * localFont({ src: "../public/fonts/garet/Garet-Book.woff2", ... }) una vez
- * el archivo esté en /public/fonts/garet/. Ver docs/CONTENIDO-PENDIENTE.md.
- */
 export const fontGaret = Outfit({
   variable: "--font-garet",
   subsets: ["latin"],
@@ -15,7 +8,6 @@ export const fontGaret = Outfit({
   display: "swap",
 });
 
-/** DISPLAY / DATO — DINish Bold (SIL OFL 1.1), sustituye a DIN Alternate Bold. */
 export const fontDinish = localFont({
   variable: "--font-dinish",
   display: "swap",
@@ -33,7 +25,6 @@ export const fontDinish = localFont({
   ],
 });
 
-/** AUXILIAR — Source Sans 3 (SIL OFL 1.1), sustituye a Myriad Pro. */
 export const fontSourceSans = Source_Sans_3({
   variable: "--font-source-sans",
   subsets: ["latin"],
@@ -41,7 +32,6 @@ export const fontSourceSans = Source_Sans_3({
   display: "swap",
 });
 
-/** Fallback de --fs-numeral cuando DINish no carga. */
 export const fontArchivo = Archivo({
   variable: "--font-archivo",
   subsets: ["latin"],

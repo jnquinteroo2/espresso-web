@@ -1,8 +1,4 @@
-/**
- * Filete de 1px fijo arriba de la ventana, en --fg de la zona activa
- * (ActiveZoneTracker mantiene --active-fg al día). Transición de color
- * junto con el header cuando cambia de zona.
- */
+
 export function ProgressBar() {
   return (
     <div

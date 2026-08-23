@@ -1,4 +1,4 @@
-// TODO: contenido de ejemplo — reemplazar con datos reales del cliente
+
 import type { EventoVinyl } from "./types";
 
 export const eventos: EventoVinyl[] = [

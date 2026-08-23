@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/styleguide"],
     },
-    sitemap: "https://espressocoffeeshop.co/sitemap.xml",
+    sitemap: "https:
   };
 }

@@ -7,10 +7,11 @@ export function MetaBar({
   className,
 }: {
   left: string;
-  right: string;
+  right?: string;
   className?: string;
 }) {
   return (
+
     <Container
       as="div"
       className={cn(
@@ -19,7 +20,7 @@ export function MetaBar({
       )}
     >
       <span>{left}</span>
-      <span>{right}</span>
+      {right && <span>{right}</span>}
     </Container>
   );
 }

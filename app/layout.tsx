@@ -6,10 +6,9 @@ import { ActiveZoneTracker } from "@/components/motion/ActiveZoneTracker";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://espressocoffeeshop.co"),
   title: {
-    default: "Espresso Coffee Shop — Mosquera, Cundinamarca",
-    template: "%s · Espresso Coffee Shop",
+    default: "ESPRESSO COFFEE SHOP MOSQUERA",
+    template: "%s · ESPRESSO COFFEE SHOP",
   },
   description:
     "Café de especialidad tostado propio en Mosquera, Cundinamarca. Café, goods, Espresso Academy, Vinyl & Drinks y roasting.",

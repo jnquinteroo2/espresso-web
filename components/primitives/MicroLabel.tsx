@@ -3,7 +3,7 @@ import type { ComponentPropsWithoutRef, ElementType } from "react";
 
 type MicroLabelProps = ComponentPropsWithoutRef<"p"> & {
   numeral?: string;
-  /** Renderiza como heading (h2/h3/...) cuando hace falta uno real en el orden de la página, sin cambiar el estilo visual. Default "p". */
+
   as?: ElementType;
 };
 
@@ -18,7 +18,8 @@ export function MicroLabel({
   return (
     <Comp
       className={cn(
-        "font-source-sans text-[length:var(--text-micro)] leading-[var(--text-micro--line-height)] uppercase tracking-[0.26em] font-medium text-zone-fg",
+
+        "font-source-sans text-[length:var(--text-kicker)] leading-[1.4] uppercase tracking-[0.26em] font-medium text-zone-fg",
         className,
       )}
       {...props}
