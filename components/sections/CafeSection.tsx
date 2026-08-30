@@ -11,7 +11,7 @@ import { cafes } from "@/content/cafes";
 const ICONS: BrandIconName[] = ["arco", "asterisco", "reloj", "estrella"];
 
 export function CafeSection() {
-  const destacados = cafes.slice(0, 3);
+  const destacados = cafes;
 
   return (
     <section
@@ -32,28 +32,28 @@ export function CafeSection() {
           <Reveal as="div" delay={40} className="flex flex-col items-center gap-4 text-center">
             <MicroLabel numeral="01">El café</MicroLabel>
             {}
-            <DisplayTitle level={2} id="cafe-heading">
-              Lotes de temporada Espresso
+            <DisplayTitle level={2} id="cafe-heading" className="!text-[clamp(25px,4.5vw,35px)]">
+              LOTES DE TEMPORADA ESPRESSO
             </DisplayTitle>
             {}
             <p className="font-garet text-[length:var(--text-desc)] leading-[1.6] max-w-prose text-[#878787]">
               Cada lote que llega a nuestra casa ha sido debidamente curado, tostado y catado desde la finca hasta la taza. Un trabajo hecho en familia para familia.
             </p>
             {}
-            <ButtonOutline
+           {/*  <ButtonOutline
               type="button"
               disabled
               size="md"
               className="mt-2 rounded-pill border-[0.5px] border-[#878787] text-[#878787]"
             >
               Más variedades
-            </ButtonOutline>
+            </ButtonOutline> */}
           </Reveal>
 
-          <div className="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             {destacados.map((cafe, i) => (
               <Reveal key={cafe.slug} delay={80 + i * 30}>
-                <ProductCard cafe={cafe} icon={ICONS[i]} />
+                <ProductCard cafe={cafe} />
               </Reveal>
             ))}
           </div>

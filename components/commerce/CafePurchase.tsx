@@ -113,7 +113,7 @@ export function CafePurchase({ cafe }: { cafe: Cafe }) {
 
       <div className="flex items-center justify-between pt-2">
         <span className="font-source-sans text-[length:var(--text-label)] uppercase tracking-[0.14em]">Total</span>
-        <span className="font-dinish text-[length:var(--text-numeral)] leading-none tabular-nums">
+        <span className="font-dinish text-[length:var(--text-h2)] leading-none tabular-nums">
           {formatCOP(total)}
         </span>
       </div>

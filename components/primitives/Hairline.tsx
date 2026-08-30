@@ -11,7 +11,7 @@ export function Hairline({
     <hr
       className={cn(
         "border-0 border-t h-px border-zone-rule",
-        inset && "mx-5 md:mx-10 lg:mx-16",
+        inset && "mx-6 md:mx-10 lg:mx-16",
         className,
       )}
     />

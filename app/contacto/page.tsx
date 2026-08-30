@@ -4,25 +4,15 @@ import { Container } from "@/components/primitives/Container";
 import { Section } from "@/components/primitives/Section";
 import { MicroLabel } from "@/components/primitives/MicroLabel";
 import { DisplayTitle } from "@/components/primitives/DisplayTitle";
-import { Hairline } from "@/components/primitives/Hairline";
 import { SpecTable } from "@/components/commerce/SpecTable";
 import { ButtonOutline } from "@/components/primitives/ButtonOutline";
-import { getWhatsAppUrl, formatCOP } from "@/lib/whatsapp";
-import { getCartaBySeccion } from "@/lib/data/carta";
-import type { CartaSeccion } from "@/content/types";
+import { getWhatsAppUrl } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
   title: "Contáctanos",
-  description: "Dirección, horarios, WhatsApp y carta de barra de Espresso Coffee Shop en Mosquera, Cundinamarca.",
+  description:
+    "Dirección, horarios y WhatsApp de Espresso Coffee Shop en Mosquera, Cundinamarca.",
 };
-
-const SECCIONES_CARTA: { seccion: CartaSeccion; label: string }[] = [
-  { seccion: "espresso", label: "Espresso" },
-  { seccion: "metodos", label: "Métodos" },
-  { seccion: "frios", label: "Fríos" },
-  { seccion: "con-leche", label: "Con leche" },
-  { seccion: "pasteleria", label: "Pastelería" },
-];
 
 export default function ContactoPage() {
   return (
@@ -48,66 +38,30 @@ export default function ContactoPage() {
 
             <ButtonOutline
               as="a"
-              href={getWhatsAppUrl("Hola ESPRESSO ☕ tengo una pregunta:")}
+              href={getWhatsAppUrl("Hola ESPRESSO tengo una pregunta:")}
               target="_blank"
               rel="noopener noreferrer"
               className="self-start"
             >
               Escribir al WhatsApp
             </ButtonOutline>
-
-            <a
-              href="#carta"
-              className="font-source-sans text-[length:var(--text-label)] uppercase tracking-[0.14em] underline underline-offset-4 hover:opacity-60 transition-opacity self-start"
-            >
-              Ver la carta ↓
-            </a>
           </div>
 
           <div className="lg:col-span-6">
-            {}
-            <div className="aspect-square w-full bg-zone-fg/[0.04] flex items-center justify-center">
-              <span className="font-source-sans text-[length:var(--text-micro)] uppercase tracking-[0.18em] text-zone-fg">
-                Mapa — pendiente de dirección exacta
-              </span>
+            <div className="aspect-square w-full overflow-hidden bg-zone-fg/[0.04]">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248.5225245712439!2d-74.23058967364534!3d4.707304675597511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f77bd4c406429%3A0x1fcc954bcbfa44b0!2sEspresso%20Coffee!5e0!3m2!1ses!2sco!4v1788048773974!5m2!1ses!2sco"
+                title="Ubicación de Espresso Coffee Shop en Google Maps"
+                width="600"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                className="h-full w-full"
+              />
             </div>
           </div>
-        </Container>
-      </Section>
-
-      <Section id="carta" className="scroll-mt-[72px] !pt-0">
-        <Container className="max-w-2xl mx-auto flex flex-col gap-14">
-          <div className="flex flex-col gap-4">
-            <MicroLabel numeral="02">Carta</MicroLabel>
-            <h2 className="font-garet text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)]">
-              Carta de barra
-            </h2>
-          </div>
-          {SECCIONES_CARTA.map(({ seccion, label }) => {
-            const items = getCartaBySeccion(seccion);
-            if (items.length === 0) return null;
-            return (
-              <div key={seccion} className="flex flex-col gap-4">
-                <h3 className="font-source-sans text-[length:var(--text-micro)] uppercase tracking-[0.26em] font-medium text-zone-fg">
-                  {label}
-                </h3>
-                <div className="flex flex-col">
-                  <Hairline />
-                  {items.map((item) => (
-                    <div key={item.nombre}>
-                      <div className="flex items-baseline justify-between gap-4 py-3">
-                        <span className="font-garet text-[length:var(--text-h3)]">{item.nombre}</span>
-                        <span className="font-dinish text-[length:var(--text-label)] tabular-nums shrink-0">
-                          {formatCOP(item.precio)}
-                        </span>
-                      </div>
-                      <Hairline />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
         </Container>
       </Section>
     </ThemeZone>

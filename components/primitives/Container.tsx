@@ -16,7 +16,7 @@ export function Container<T extends ElementType = "div">({
   return (
     <Comp
       className={cn(
-        "mx-auto w-full max-w-[1440px] px-5 md:px-10 lg:px-16",
+        "mx-auto w-full max-w-[1440px] px-6 md:px-10 lg:px-16",
         className,
       )}
       {...props}

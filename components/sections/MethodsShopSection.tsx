@@ -5,15 +5,16 @@ import { Section } from "@/components/primitives/Section";
 import { MicroLabel } from "@/components/primitives/MicroLabel";
 import { DisplayTitle } from "@/components/primitives/DisplayTitle";
 import { Reveal } from "@/components/motion/Reveal";
-import { PLACEHOLDER_ASSETS } from "@/content/brand-assets";
+import { METHODS_SHOP_CATEGORIA_IMAGEN } from "@/content/brand-assets";
+import type { CategoriaMethodsShop } from "@/content/types";
 
-const DESTACADOS = [
-  { label: "Molinos", href: "/methods-shop/molinos" },
-  { label: "Drips", href: "/methods-shop/drips" },
-  { label: "Accesorios", href: "/methods-shop/accesorios" },
-  { label: "Merch", href: "/methods-shop/merch" },
-  { label: "Tazas", href: "/methods-shop/tazas" },
-  { label: "Bolsas", href: "/methods-shop/bolsas" },
+const DESTACADOS: { label: string; categoria: CategoriaMethodsShop }[] = [
+  { label: "Molinos", categoria: "molinos" },
+  { label: "Drips", categoria: "drips" },
+  { label: "Accesorios", categoria: "accesorios" },
+  { label: "Merch", categoria: "merch" },
+  { label: "Tazas", categoria: "tazas" },
+  { label: "Filtros", categoria: "filtros" },
 ];
 
 export function MethodsShopSection() {
@@ -23,21 +24,24 @@ export function MethodsShopSection() {
         <Container className="flex flex-col gap-16">
           <Reveal as="div" className="flex flex-col items-center gap-4 text-center">
             <MicroLabel numeral="03">Tienda de accesorios</MicroLabel>
-            <DisplayTitle level={2} id="methods-shop-heading">
-              Lo que usamos en la barra
+            <DisplayTitle level={2} id="methods-shop-heading" className="!text-[clamp(28px,3.5vw,35px)]">
+              LO QUE USAMOS EN LA BARRA
             </DisplayTitle>
             {}
             <p className="font-garet text-[length:var(--text-desc)] leading-[1.6] max-w-prose text-[#878787]">
-              Las herramientas pueden ser el mejor amigo o el peor enemigo de una barista, pero todo lo que nuestra tienda lo encuentras aquí.
+              Las herramientas pueden ser el mejor amigo o el peor enemigo de una barista, pero todo lo encuentas acá en nuestra tienda.
             </p>
           </Reveal>
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
             {DESTACADOS.map((d, i) => (
-              <Reveal key={d.href} delay={i * 30}>
-                <Link href={d.href} className="group relative aspect-3/4 flex items-end justify-center overflow-hidden">
+              <Reveal key={d.categoria} delay={i * 30}>
+                <Link
+                  href={`/methods-shop/${d.categoria}`}
+                  className="group relative aspect-3/4 flex items-end justify-center overflow-hidden"
+                >
                   <img
-                    src={PLACEHOLDER_ASSETS.methodsShopBox}
+                    src={METHODS_SHOP_CATEGORIA_IMAGEN[d.categoria]}
                     alt=""
                     aria-hidden="true"
                     className="absolute inset-0 h-full w-full object-cover"

@@ -65,7 +65,7 @@ export function CafeCatalog({ cafes }: { cafes: Cafe[] }) {
         resultCount={filtered.length}
       />
 
-      <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-16 py-12">
+      <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 py-12">
         <p aria-live="polite" className="sr-only">
           {filtered.length} {filtered.length === 1 ? "café encontrado" : "cafés encontrados"}
         </p>

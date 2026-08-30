@@ -41,8 +41,6 @@
   /* Scroll progress (0-1), escrito por un único listener rAF */
   --scroll-progress: 0;
 
-  /* Zona activa bajo el header — ActiveZoneTracker la actualiza; el valor
-     por defecto (paper) cubre el primer frame antes de que hidrate JS. */
   --active-bg: var(--paper);
   --active-fg: var(--ink);
 }
@@ -99,15 +97,6 @@
   --radius-none: var(--r-none);
   --radius-pill: var(--r-pill);
 
-  /* Fuentes — corrección 2026-08-23 (octava tanda): "los tipos de letra
-     son DIN Alternate Bold y Garet Book... para los textos grandes [DIN] y
-     los subtextos en garet gris #878787 [Garet]" — aclara y reemplaza la
-     corrección anterior (que había colapsado las 3 fuentes en una sola).
-     Son 2 fuentes reales, cada una con un rol fijo, sin una tercera
-     variante: font-dinish vuelve a ser DINish real (textos grandes:
-     títulos, nombres de producto, precios, numerales) y font-source-sans
-     se pliega sobre font-garet (subtextos: párrafos, etiquetas, notas —
-     ver componentes para el color gris #878787 aplicado aparte). */
   --font-garet: var(--font-garet);
   --font-dinish: var(--font-dinish), var(--font-archivo), "Barlow", sans-serif;
   --font-source-sans: var(--font-garet);
@@ -125,7 +114,7 @@
   --text-h3--line-height: 1.25;
   --text-h2: clamp(34px, 4.2vw, 60px);
   --text-h2--line-height: 1.08;
-  --text-h1: clamp(48px, 8.5vw, 132px);
+  --text-h1: clamp(36px, 5.5vw, 84px); 
   --text-h1--line-height: 0.95;
   --text-numeral: clamp(40px, 6vw, 92px);
   --text-numeral--line-height: 0.9;
@@ -167,10 +156,7 @@ body {
   border-radius: var(--r-pill) !important;
 }
 
-/* Corrección 2026-08-23: esquina superior izquierda redondeada en las fotos
-   de producto de "Lotes de temporada" (mockup de referencia) — segunda
-   excepción puntual a la regla de "sin esquinas redondas", igual que
-   .rounded-pill. */
+
 .rounded-card-photo {
   border-top-left-radius: 64px !important;
 }

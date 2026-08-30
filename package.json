@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "vitest run"
+    "test": "vitest run",
+    "build:static": "EXPORT=1 next build && cp deploy/htaccess out/.htaccess"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

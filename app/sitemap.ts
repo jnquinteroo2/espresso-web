@@ -1,11 +1,14 @@
 import type { MetadataRoute } from "next";
 import { getCafes } from "@/lib/data/cafes";
 
-const BASE_URL = "https://schema.org"
+// Requerido por `output: export`: sin esto el build estático falla.
+export const dynamic = "force-static";
+
+const BASE_URL = "https://espressocol.com";
 
 const STATIC_ROUTES = [
   "/",
-  "/nosotros",
+  "/carta",
   "/cafe",
   "/suscripcion",
   "/methods-shop",
@@ -14,7 +17,7 @@ const STATIC_ROUTES = [
   "/methods-shop/accesorios",
   "/methods-shop/merch",
   "/methods-shop/tazas",
-  "/methods-shop/bolsas",
+  "/methods-shop/filtros",
   "/marcas-aliadas",
   "/contacto",
   "/legal/privacidad",

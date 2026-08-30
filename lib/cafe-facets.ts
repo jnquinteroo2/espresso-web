@@ -26,6 +26,7 @@ const ESTADO_LABEL: Record<Cafe["estado"], string> = {
   limitada: "Edición limitada",
   preventa: "Preventa",
   agotado: "Agotado",
+  nuevo: "Nuevo",
 };
 
 const METODO_LABEL: Record<string, string> = {

@@ -6,11 +6,12 @@ import { Section } from "@/components/primitives/Section";
 import { MicroLabel } from "@/components/primitives/MicroLabel";
 import { DisplayTitle } from "@/components/primitives/DisplayTitle";
 import { getMethodsShopCategoriaCount } from "@/lib/data/methods-shop";
+import { METHODS_SHOP_CATEGORIA_IMAGEN } from "@/content/brand-assets";
 import type { CategoriaMethodsShop } from "@/content/types";
 
 export const metadata: Metadata = {
   title: "Methods shop",
-  description: "Equipos y accesorios de café de especialidad: molinos, drips, accesorios, merch, tazas y bolsas.",
+  description: "Equipos y accesorios de café de especialidad: molinos, drips, accesorios, merch, tazas y filtros.",
 };
 
 const CATEGORIAS: { num: string; nombre: string; categoria: CategoriaMethodsShop }[] = [
@@ -19,7 +20,7 @@ const CATEGORIAS: { num: string; nombre: string; categoria: CategoriaMethodsShop
   { num: "03", nombre: "Accesorios", categoria: "accesorios" },
   { num: "04", nombre: "Merch", categoria: "merch" },
   { num: "05", nombre: "Tazas", categoria: "tazas" },
-  { num: "06", nombre: "Bolsas", categoria: "bolsas" },
+  { num: "06", nombre: "Filtros", categoria: "filtros" },
 ];
 
 export default function MethodsShopHubPage() {
@@ -41,10 +42,23 @@ export default function MethodsShopHubPage() {
             <Link
               key={c.categoria}
               href={`/methods-shop/${c.categoria}`}
-              className="group aspect-square flex flex-col justify-between p-8 bg-zone-fg/[0.04] hover:bg-zone-fg/[0.08] transition-colors"
+              className="group relative aspect-square flex flex-col justify-between overflow-hidden p-8 bg-zone-fg/[0.04]"
             >
-              <span className="font-dinish text-[length:var(--text-numeral)] leading-none">{c.num}</span>
-              <div className="flex items-end justify-between">
+              <img
+                src={METHODS_SHOP_CATEGORIA_IMAGEN[c.categoria]}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[var(--dur-base)] ease-[var(--ease-out)] group-hover:scale-105"
+                draggable={false}
+              />
+              <span
+                aria-hidden="true"
+                className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/30 to-ink/40 transition-colors group-hover:from-ink/80"
+              />
+              <span className="relative font-dinish text-[length:var(--text-numeral)] leading-none text-paper">
+                {c.num}
+              </span>
+              <div className="relative flex items-end justify-between text-paper">
                 <span className="font-garet text-[length:var(--text-h2)] leading-none">{c.nombre}</span>
                 <span className="font-source-sans text-[length:var(--text-label)] uppercase tracking-[0.14em]">
                   {getMethodsShopCategoriaCount(c.categoria)} ítems

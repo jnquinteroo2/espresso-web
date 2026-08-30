@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from "react";
 
-const VIDEO_SRC: string | null = null; 
-const POSTER_SRC: string | null = null; 
+import { PLACEHOLDER_ASSETS } from "@/content/brand-assets";
+
+const VIDEO_SRC: string | null = null;
+const POSTER_SRC: string | null = PLACEHOLDER_ASSETS.heroFondo;
 
 export function HeroVideoLayer() {
   const [canPlayVideo, setCanPlayVideo] = useState(false);
@@ -28,11 +30,11 @@ export function HeroVideoLayer() {
   if (!VIDEO_SRC && !POSTER_SRC) return null;
 
   return (
-    <div className="absolute inset-0 z-0 overflow-hidden" style={{ aspectRatio: "16 / 9" }} aria-hidden="true">
+    <div className="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
       {POSTER_SRC && (
-
         <img src={POSTER_SRC} alt="" className="absolute inset-0 h-full w-full object-cover" />
       )}
+
       {canPlayVideo && VIDEO_SRC && (
         <video
           className="absolute inset-0 h-full w-full object-cover"
@@ -47,8 +49,8 @@ export function HeroVideoLayer() {
           tabIndex={-1}
         />
       )}
-      {}
-      <div className="absolute inset-0 bg-white/85" />
+
+      <div className="absolute inset-0 bg-black/100" />
     </div>
   );
 }

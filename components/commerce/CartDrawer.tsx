@@ -5,6 +5,10 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { getWhatsAppUrl, buildOrderMessage, formatCOP } from "@/lib/whatsapp";
 import { useOrderStore, selectTotalPrecio } from "@/lib/store/order";
+import {
+  SubscriptionFormModal,
+  type SubscriptionFormData,
+} from "@/components/commerce/SubscriptionFormModal";
 
 export function CartDrawer() {
   const isOpen = useOrderStore((s) => s.isCartOpen);
@@ -16,6 +20,7 @@ export function CartDrawer() {
   const total = useOrderStore(selectTotalPrecio);
 
   const [visible, setVisible] = useState(false);
+  const [datosAbierto, setDatosAbierto] = useState(false);
 
   if (!isOpen && visible) {
     setVisible(false);
@@ -53,7 +58,16 @@ export function CartDrawer() {
 
   function handleComprar() {
     if (items.length === 0) return;
-    window.open(getWhatsAppUrl(buildOrderMessage(items)), "_blank", "noopener,noreferrer");
+    setDatosAbierto(true);
+  }
+
+  function handleDatos(datos: SubscriptionFormData) {
+    window.open(
+      getWhatsAppUrl(buildOrderMessage(items, datos)),
+      "_blank",
+      "noopener,noreferrer",
+    );
+    setDatosAbierto(false);
     clear();
     close();
   }
@@ -130,12 +144,12 @@ export function CartDrawer() {
                         <Link
                           href={item.href}
                           onClick={close}
-                          className="font-garet text-[length:var(--text-h3)] leading-tight hover:opacity-60 transition-opacity"
+                          className="font-garet text-[length:var(--text-lead)] leading-tight hover:opacity-60 transition-opacity"
                         >
                           {item.nombre}
                         </Link>
                       ) : (
-                        <span className="font-garet text-[length:var(--text-h3)] leading-tight">{item.nombre}</span>
+                        <span className="font-garet text-[length:var(--text-lead)] leading-tight">{item.nombre}</span>
                       )}
                       {item.detalle && (
                         <span className="font-source-sans text-[length:var(--text-micro)] uppercase tracking-[0.14em] text-zone-fg/60">
@@ -159,23 +173,23 @@ export function CartDrawer() {
                         type="button"
                         onClick={() => setCantidad(item.id, item.cantidad - 1)}
                         aria-label={`Restar cantidad de ${item.nombre}`}
-                        className="min-h-9 min-w-9 border border-zone-rule hover:border-zone-fg transition-colors"
+                        className="min-h-9 min-w-9 flex items-center justify-center font-dinish text-[length:var(--text-lead)] leading-none border border-zone-rule hover:border-zone-fg transition-colors"
                       >
                         −
                       </button>
-                      <span className="font-dinish tabular-nums w-5 text-center" aria-live="polite">
+                      <span className="font-dinish text-[length:var(--text-lead)] tabular-nums w-6 text-center" aria-live="polite">
                         {item.cantidad}
                       </span>
                       <button
                         type="button"
                         onClick={() => setCantidad(item.id, item.cantidad + 1)}
                         aria-label={`Sumar cantidad de ${item.nombre}`}
-                        className="min-h-9 min-w-9 border border-zone-rule hover:border-zone-fg transition-colors"
+                        className="min-h-9 min-w-9 flex items-center justify-center font-dinish text-[length:var(--text-lead)] leading-none border border-zone-rule hover:border-zone-fg transition-colors"
                       >
                         +
                       </button>
                     </div>
-                    <span className="font-dinish text-[length:var(--text-label)] tabular-nums">
+                    <span className="font-dinish text-[length:var(--text-lead)] tabular-nums">
                       {formatCOP(item.precioUnitario * item.cantidad)}
                     </span>
                   </div>
@@ -188,7 +202,7 @@ export function CartDrawer() {
                 <span className="font-source-sans text-[length:var(--text-label)] uppercase tracking-[0.14em]">
                   Total
                 </span>
-                <span className="font-dinish text-[length:var(--text-numeral)] leading-none tabular-nums">
+                <span className="font-dinish text-[length:var(--text-h3)] leading-none tabular-nums">
                   {formatCOP(total)}
                 </span>
               </div>
@@ -210,6 +224,18 @@ export function CartDrawer() {
           </>
         )}
       </div>
+
+      <SubscriptionFormModal
+        open={datosAbierto}
+        onClose={() => setDatosAbierto(false)}
+        onSubmit={handleDatos}
+        campos={["nombre", "direccion"]}
+        tema="paper"
+        ariaLabel="Datos de entrega"
+        eyebrow="Último paso"
+        titulo="¿A nombre de quién y a dónde?"
+        submitLabel="Completar compra"
+      />
     </>
   );
 }

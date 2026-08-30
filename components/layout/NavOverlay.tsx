@@ -8,7 +8,7 @@ import { IconRow } from "@/components/brand/IconRow";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS: { href: string; label: string; sublabel?: string }[] = [
-  { href: "/nosotros", label: "Quiénes somos", sublabel: "Nuestros proyectos" },
+  { href: "/carta", label: "Carta", sublabel: "Carta de barra" },
   { href: "/cafe", label: "Coffee" },
   { href: "/suscripcion", label: "Suscripción" },
   { href: "/methods-shop", label: "Methods shop" },
@@ -75,7 +75,7 @@ export function NavOverlay({
     >
       {}
       <div className="sticky top-0 z-10 h-[72px]">
-        <div className="mx-auto flex h-full max-w-[1440px] items-center justify-end px-5 md:px-10 lg:px-16">
+        <div className="mx-auto flex h-full max-w-[1440px] items-center justify-end px-6 md:px-10 lg:px-16">
           <button
             type="button"
             onClick={() => {

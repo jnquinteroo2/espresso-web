@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ThemeZone } from "@/components/primitives/ThemeZone";
 import { Container } from "@/components/primitives/Container";
 import { Section } from "@/components/primitives/Section";
 import { Hairline } from "@/components/primitives/Hairline";
+import { BackLink } from "@/components/primitives/BackLink";
 import { MicroLabel } from "@/components/primitives/MicroLabel";
 import { RoastScale } from "@/components/commerce/RoastScale";
 import { SpecTable } from "@/components/commerce/SpecTable";
 import { ProductCard } from "@/components/commerce/ProductCard";
 import { CafePurchase } from "@/components/commerce/CafePurchase";
-import { BrandIcon } from "@/components/brand/BrandIcon";
+import { CafeImageCarousel } from "@/components/commerce/CafeImageCarousel";
 import { getCafeBySlug, getCafes, getOtrosLotes } from "@/lib/data/cafes";
+import { PLACEHOLDER_ASSETS } from "@/content/brand-assets";
 
 export function generateStaticParams() {
   return getCafes().map((c) => ({ slug: c.slug }));
@@ -55,8 +58,8 @@ export default async function CafeDetailPage({
       priceCurrency: "COP",
       availability:
         cafe.estado === "agotado"
-          ? "https://schema.org"
-          : "https://schema.org"
+          ? "https://schema.org/OutOfStock"
+          : "https://schema.org/InStock",
     },
   };
 
@@ -68,21 +71,17 @@ export default async function CafeDetailPage({
       />
 
       <Section>
+        <Container className="mb-10 md:mb-14">
+          <BackLink href="/cafe">Volver a cafés</BackLink>
+        </Container>
+
         <Container className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-7 lg:sticky lg:top-24 lg:self-start">
-            <div
-              className="aspect-4/5 flex items-start p-6"
-              style={{ backgroundColor: cafe.colorBloque }}
-            >
-              <span className="font-dinish text-[length:var(--text-numeral)] leading-none text-beige">
-                {cafe.codigo}
-              </span>
-            </div>
+            <CafeImageCarousel cafe={cafe} />
           </div>
 
           <div className="lg:col-span-5 flex flex-col gap-8">
             <div className="flex flex-col gap-3">
-              <span className="font-dinish text-[length:var(--text-numeral)] leading-none">{cafe.codigo}</span>
               <h1 className="font-garet text-[length:var(--text-h1)] leading-[0.95] text-[clamp(32px,5vw,60px)]">
                 {cafe.nombre}
               </h1>
@@ -96,7 +95,7 @@ export default async function CafeDetailPage({
             <Hairline />
 
             <div className="flex flex-col gap-4">
-              <MicroLabel>Transparencia</MicroLabel>
+              <MicroLabel>Ficha Técnica</MicroLabel>
               <SpecTable
                 rows={[
                   { label: "País", value: cafe.origen.pais },
@@ -116,28 +115,18 @@ export default async function CafeDetailPage({
                       </span>
                     ),
                   },
+                  { label: "Agtron", value: cafe.agtron },
+                  { label: "Preparación recomendada", value: cafe.preparacionRecomendada },
                 ]}
               />
             </div>
 
-            <div className="flex flex-col gap-4">
-              <MicroLabel>Preparación</MicroLabel>
-              <SpecTable
-                rows={cafe.preparacion.flatMap((p) => [
-                  { label: `${p.metodo} — ratio`, value: p.ratio },
-                  { label: `${p.metodo} — molienda`, value: p.molienda },
-                  { label: `${p.metodo} — temperatura`, value: p.temperatura },
-                  { label: `${p.metodo} — tiempo`, value: p.tiempo },
-                ])}
-              />
-            </div>
-
             <div className="flex justify-center py-6">
-              <BrandIcon
-                name="asterisco"
-                size={64}
-                decorative={false}
-                label={`Lote ${cafe.codigo} — ${cafe.origen.region}`}
+              <img
+                src={PLACEHOLDER_ASSETS.categoriaImagen[cafe.categoria]}
+                alt={`Línea especial ${cafe.categoria}`}
+                className="h-60 w-60 object-contain"
+                draggable={false}
               />
             </div>
           </div>

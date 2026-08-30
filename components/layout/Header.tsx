@@ -34,7 +34,7 @@ export function Header() {
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-40 h-[72px] bg-active-bg text-active-fg transition-colors duration-[600ms] ease-[var(--ease-inout)]">
-        <div className="mx-auto flex h-full max-w-[1440px] items-center justify-between px-5 md:px-10 lg:px-16">
+        <div className="mx-auto flex h-full max-w-[1440px] items-center justify-between px-6 md:px-10 lg:px-16">
           <Link
             href="/"
             aria-label="Espresso Coffee Shop — inicio"
@@ -45,7 +45,7 @@ export function Header() {
               src={BRAND_ASSETS.selloCircular}
               alt=""
               aria-hidden="true"
-              className="h-14 w-14 object-contain select-none pointer-events-none"
+              className="h-12 w-12 object-contain select-none pointer-events-none"
               draggable={false}
             />
           </Link>

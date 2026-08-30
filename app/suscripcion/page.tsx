@@ -5,7 +5,6 @@ import { Section } from "@/components/primitives/Section";
 import { MicroLabel } from "@/components/primitives/MicroLabel";
 import { DisplayTitle } from "@/components/primitives/DisplayTitle";
 import { Hairline } from "@/components/primitives/Hairline";
-import { BrandIcon } from "@/components/brand/BrandIcon";
 import { SubscriptionConfigurator } from "@/components/commerce/SubscriptionConfigurator";
 
 export const metadata: Metadata = {
@@ -35,21 +34,20 @@ const FAQ = [
 export default function SuscripcionPage() {
   return (
     <ThemeZone theme="blue" as="div" track>
-      <Section className="flex flex-col items-center gap-8 text-center !pb-12">
-        <BrandIcon name="asterisco" size={72} decorative={false} label="Suscripción mensual — Coffee Magazine" />
-        <Container className="flex flex-col items-center gap-4">
+      <Section className="flex flex-col items-center text-center !pt-[clamp(40px,5.5vh,88px)] !pb-6">
+        <Container className="flex flex-col items-center gap-6 max-w-prose">
           <MicroLabel numeral="02">Suscripción</MicroLabel>
-          <DisplayTitle level={1} className="text-[clamp(40px,6vw,72px)]">
-            Coffee Magazine
+          <DisplayTitle level={2} className="!text-[clamp(28px,3.5vw,35px)]">
+            COFFEE MAGAZINE
           </DisplayTitle>
-          <p className="font-source-sans text-[length:var(--text-lead)] max-w-prose">
+          <p className="font-garet text-[length:var(--text-desc)] leading-[1.6] text-[#878787]">
             Un lote distinto cada mes, elegido por nosotros, con su ficha impresa y las notas de preparación.
           </p>
         </Container>
       </Section>
 
       <Section className="!pt-0">
-        <Container className="max-w-3xl mx-auto">
+        <Container className="max-w-6xl mx-auto">
           <SubscriptionConfigurator />
         </Container>
       </Section>

@@ -1,0 +1,48 @@
+# Configuración de Apache para Hostinger (hosting compartido).
+# Este archivo se copia como .htaccess dentro de out/ al correr `npm run build:static`.
+
+Options -MultiViews
+DirectoryIndex index.html
+
+# La exportación estática genera 404.html a partir de app/not-found.tsx
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # --- Redirecciones 301 ---
+  # Son las mismas de next.config.ts: la exportación estática no las incluye,
+  # porque en Next las resuelve el servidor. Si se agrega una allá, agregarla aquí.
+  RewriteRule ^academy(/.*)?$                /nosotros/#academy   [R=301,NE,L]
+  RewriteRule ^nosotros/academy(/.*)?$       /nosotros/#academy   [R=301,NE,L]
+  RewriteRule ^vinyl-and-drinks/?$           /nosotros/#vinyl     [R=301,NE,L]
+  RewriteRule ^nosotros/vinyl-and-drinks/?$  /nosotros/#vinyl     [R=301,NE,L]
+  RewriteRule ^roasting/?$                   /nosotros/#roasting  [R=301,NE,L]
+  RewriteRule ^contacto/carta/?$             /carta/              [R=301,L]
+  RewriteRule ^methods-shop/bolsas/?$        /methods-shop/filtros/ [R=301,L]
+  RewriteRule ^goods/?$                      /methods-shop/       [R=301,L]
+  RewriteRule ^goods/(.+)$                   /methods-shop/$1     [R=301,L]
+
+  # --- HTTPS y dominio canónico ---
+  # Descomentar cuando el dominio ya esté apuntando a Hostinger con SSL activo.
+  # RewriteCond %{HTTPS} off
+  # RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+  # RewriteCond %{HTTP_HOST} ^www\.espressocol\.com$ [NC]
+  # RewriteRule ^(.*)$ https://espressocol.com/$1 [R=301,L]
+</IfModule>
+
+# --- Caché ---
+<IfModule mod_headers.c>
+  # Los archivos de /_next/static llevan hash en el nombre: se pueden cachear para siempre.
+  <FilesMatch "\.(js|css|woff2|woff|ttf|otf)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  # El HTML no: debe revalidarse en cada visita para que un deploy nuevo se vea.
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json image/svg+xml
+</IfModule>

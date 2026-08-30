@@ -8,9 +8,8 @@ import { SocialIcon, type SocialIconName } from "@/components/brand/SocialIcon";
 import { ButtonOutline } from "@/components/primitives/ButtonOutline";
 
 const SOCIALES: { name: SocialIconName; label: string; href: string }[] = [
-  { name: "facebook", label: "Facebook", href: "https://facebook.com" },
-  { name: "instagram", label: "Instagram", href: "https://instagram.com" },
-  { name: "tiktok", label: "TikTok", href: "https://tiktok.com" },
+  { name: "instagram", label: "Instagram", href: "https://www.instagram.com/niko.carde_?igsi=ZmxzdTNoOWI0cnEz&utm_source=qr" },
+  { name: "tiktok", label: "TikTok", href: "https://www.tiktok.com/@espresso_coffeeshop?_r=1&_t=ZS-99Inl45L0B2" },
   { name: "whatsapp", label: "WhatsApp", href: "https://wa.me/573134047822" },
 ];
 
@@ -25,18 +24,9 @@ const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
     ],
   },
   {
-    title: "Academy",
-    links: [
-      { label: "Programas", href: "/nosotros#academy" },
-      { label: "Eventos", href: "/nosotros#academy" },
-      { label: "Roasting", href: "/nosotros#roasting" },
-      { label: "Calendarios académico", href: "/nosotros#academy" },
-    ],
-  },
-  {
     title: "Shop",
     links: [
-      { label: "Quiénes somos", href: "/nosotros" },
+      { label: "Carta", href: "/carta" },
       { label: "Contáctanos", href: "/contacto" },
       { label: "Ubicación", href: "/contacto" },
       { label: "Reserve", href: "/contacto" },
@@ -59,7 +49,13 @@ export function Footer() {
       </h2>
       <Container className="py-16 md:py-24 flex flex-col gap-16">
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-          <Wordmark size="lg" />
+          <Link
+            href="/"
+            aria-label="Espresso Coffee Shop — inicio"
+            className="self-start hover:opacity-60 transition-opacity"
+          >
+            <Wordmark size="lg" />
+          </Link>
           <div className="flex w-full max-w-md flex-col gap-2 md:items-end">
             <p className="font-source-sans text-[length:var(--text-micro)] uppercase tracking-[0.26em] text-zone-fg">
               Contáctanos mediante correo
@@ -80,7 +76,7 @@ export function Footer() {
 
         <Hairline />
 
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-3">
           {COLUMNS.map((col) => (
             <div key={col.title} className="flex flex-col gap-3">
               <p className="font-source-sans text-[length:var(--text-micro)] uppercase tracking-[0.26em] text-zone-fg">
@@ -88,10 +84,10 @@ export function Footer() {
               </p>
               <ul className="flex flex-col gap-2">
                 {col.links.map((l) => (
-                  <li key={l.href}>
+                  <li key={`${l.label}-${l.href}`}>
                     <Link
                       href={l.href}
-                      className="font-source-sans text-[length:var(--text-label)] hover:opacity-60 transition-opacity"
+                      className="font-source-sans text-[length:var(--text-body)] hover:opacity-60 transition-opacity"
                     >
                       {l.label}
                     </Link>

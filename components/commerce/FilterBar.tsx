@@ -44,7 +44,7 @@ export function FilterBar({
   return (
     <>
       <div className="sticky top-[72px] z-30 bg-zone-bg border-b border-zone-rule">
-        <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-16 py-4 flex flex-wrap items-center justify-between gap-4">
+        <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 py-4 flex flex-wrap items-center justify-between gap-4">
           <button
             type="button"
             onClick={() => setOpen(true)}
@@ -67,7 +67,7 @@ export function FilterBar({
         </div>
 
         {activeChips.length > 0 && (
-          <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-16 pb-4 flex flex-wrap items-center gap-2">
+          <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 pb-4 flex flex-wrap items-center gap-2">
             {activeChips.map(({ key, value }) => (
               <button
                 key={`${key}-${value}`}

@@ -4,7 +4,6 @@ import { Section } from "@/components/primitives/Section";
 import { MicroLabel } from "@/components/primitives/MicroLabel";
 import { DisplayTitle } from "@/components/primitives/DisplayTitle";
 import { Hairline } from "@/components/primitives/Hairline";
-import { ButtonOutline } from "@/components/primitives/ButtonOutline";
 import { BrandIcon } from "@/components/brand/BrandIcon";
 import { Reveal } from "@/components/motion/Reveal";
 
@@ -62,9 +61,6 @@ export function RoastingSection({ titleLevel = 1 }: { titleLevel?: 1 | 2 }) {
           ))}
         </Container>
 
-        <ButtonOutline as="a" href="/nosotros#roasting">
-          Ver el proceso
-        </ButtonOutline>
       </Section>
     </ThemeZone>
   );
