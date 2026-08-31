@@ -8,11 +8,13 @@ import {
   type SubscriptionFormData,
 } from "@/components/commerce/SubscriptionFormModal";
 import { getWhatsAppUrl, buildMaquilaMessage } from "@/lib/whatsapp";
+import posthog from "posthog-js";
 
 export function MaquilaForm() {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   function handleSubmit(data: SubscriptionFormData) {
+    posthog.capture("maquila_inquiry_submitted");
     const message = buildMaquilaMessage(data);
     window.open(getWhatsAppUrl(message), "_blank", "noopener,noreferrer");
     setIsFormOpen(false);

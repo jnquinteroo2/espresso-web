@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ButtonOutline } from "@/components/primitives/ButtonOutline";
 import { useOrderStore, orderItemId } from "@/lib/store/order";
+import posthog from "posthog-js";
 
 export function AddToCartButton({
   slug,
@@ -41,6 +42,11 @@ export function AddToCartButton({
     clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => setJustAdded(false), 1400);
     openCart();
+    posthog.capture("product_added_to_cart", {
+      product_name: nombre,
+      product_slug: slug,
+      unit_price_cop: precio,
+    });
   }
 
   return (

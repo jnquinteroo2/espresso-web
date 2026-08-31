@@ -9,6 +9,7 @@ import {
   SubscriptionFormModal,
   type SubscriptionFormData,
 } from "@/components/commerce/SubscriptionFormModal";
+import posthog from "posthog-js";
 
 export function CartDrawer() {
   const isOpen = useOrderStore((s) => s.isCartOpen);
@@ -58,10 +59,18 @@ export function CartDrawer() {
 
   function handleComprar() {
     if (items.length === 0) return;
+    posthog.capture("cart_checkout_started", {
+      item_count: items.length,
+      total_cop: total,
+    });
     setDatosAbierto(true);
   }
 
   function handleDatos(datos: SubscriptionFormData) {
+    posthog.capture("order_completed", {
+      item_count: items.length,
+      total_cop: total,
+    });
     window.open(
       getWhatsAppUrl(buildOrderMessage(items, datos)),
       "_blank",

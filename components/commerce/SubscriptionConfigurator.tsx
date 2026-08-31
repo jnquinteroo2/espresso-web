@@ -5,6 +5,7 @@ import { ButtonOutline } from "@/components/primitives/ButtonOutline";
 import { Hairline } from "@/components/primitives/Hairline";
 import { getWhatsAppUrl, buildSubscriptionMessage, formatCOP } from "@/lib/whatsapp";
 import { SubscriptionFormModal, type SubscriptionFormData } from "@/components/commerce/SubscriptionFormModal";
+import posthog from "posthog-js";
 
 const METODOS = ["En grano", "Molido - Espresso", "Molido - Filtrado", "Molido - Prensa"];
 
@@ -57,6 +58,13 @@ export function SubscriptionConfigurator() {
   const precio = perfil.precio * frecuencia.factor * gramaje.factor;
 
   function handleSuscribir(data: SubscriptionFormData) {
+    posthog.capture("subscription_started", {
+      grind_method: metodo,
+      flavor_profile: perfil.label,
+      frequency: frecuencia.label,
+      bag_size: gramaje.label,
+      price_cop: precio,
+    });
     const message = buildSubscriptionMessage({
       metodo,
       perfil: perfil.label,
@@ -155,7 +163,16 @@ export function SubscriptionConfigurator() {
       <ButtonOutline
         as="button"
         type="button"
-        onClick={() => setIsFormOpen(true)}
+        onClick={() => {
+          posthog.capture("subscription_form_opened", {
+            grind_method: metodo,
+            flavor_profile: perfil.label,
+            frequency: frecuencia.label,
+            bag_size: gramaje.label,
+            price_cop: precio,
+          });
+          setIsFormOpen(true);
+        }}
         fullWidth
       >
         Suscribirme

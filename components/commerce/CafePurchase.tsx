@@ -5,6 +5,7 @@ import type { Cafe } from "@/content/types";
 import { ButtonOutline } from "@/components/primitives/ButtonOutline";
 import { formatCOP } from "@/lib/whatsapp";
 import { useOrderStore, orderItemId } from "@/lib/store/order";
+import posthog from "posthog-js";
 
 export function CafePurchase({ cafe }: { cafe: Cafe }) {
   const [presentacionIdx, setPresentacionIdx] = useState(0);
@@ -34,6 +35,15 @@ export function CafePurchase({ cafe }: { cafe: Cafe }) {
     clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => setJustAdded(false), 1400);
     openCart();
+    posthog.capture("product_added_to_cart", {
+      product_name: cafe.nombre,
+      product_slug: cafe.slug,
+      presentation_grams: presentacion.gramos,
+      grind_type: molienda,
+      quantity: cantidad,
+      unit_price_cop: presentacion.precio,
+      total_cop: total,
+    });
   }
 
   return (
