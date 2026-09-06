@@ -90,7 +90,9 @@ export function Header() {
               ref={menuButtonRef}
               type="button"
               onClick={() => {
-                if (!hasOpened) {
+                if (open) {
+                  setOpen(false);
+                } else if (!hasOpened) {
 
                   setHasOpened(true);
                   requestAnimationFrame(() => {
@@ -100,7 +102,7 @@ export function Header() {
                   setOpen(true);
                 }
               }}
-              aria-label="Abrir menú"
+              aria-label={open ? "Cerrar menú" : "Abrir menú"}
               aria-expanded={open}
               className={cn(
                 "min-h-11 min-w-11 flex flex-col items-center justify-center gap-2 hover:opacity-60 transition-opacity",
