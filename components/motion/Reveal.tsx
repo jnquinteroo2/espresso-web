@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { observeReveal, unobserveReveal } from "@/lib/reveal-observer";
+import { observeReveal } from "@/lib/reveal-observer";
 import { cn } from "@/lib/utils";
 import type { ElementType, ComponentPropsWithoutRef } from "react";
 
@@ -24,8 +24,7 @@ export function Reveal<T extends ElementType = "div">({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    observeReveal(el);
-    return () => unobserveReveal(el);
+    return observeReveal(el);
   }, []);
 
   return (
