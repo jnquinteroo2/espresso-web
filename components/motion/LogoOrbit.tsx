@@ -30,16 +30,27 @@ export function LogoOrbit({ logos }: { logos: LogoOrbitItem[] }) {
   const ultimoXRef = useRef(0);
   const frameRef = useRef<number | null>(null);
 
-  // El radio del anillo se ajusta al ancho disponible.
+  // El radio del anillo se ajusta al ancho disponible. El cálculo se aplaza al
+  // siguiente frame y solo actualiza el estado si el radio cambia, porque
+  // redimensionar el anillo dentro del elemento observado dispararía el aviso
+  // benigno "ResizeObserver loop" del navegador.
   useEffect(() => {
     const el = viewportRef.current;
     if (!el) return;
+    let frame = 0;
     const observer = new ResizeObserver((entries) => {
       const ancho = entries[0].contentRect.width;
-      setRadio(Math.round(Math.max(170, Math.min(380, ancho * 0.4))));
+      const nuevo = Math.round(Math.max(170, Math.min(380, ancho * 0.4)));
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        setRadio((actual) => (actual === nuevo ? actual : nuevo));
+      });
     });
     observer.observe(el);
-    return () => observer.disconnect();
+    return () => {
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+    };
   }, []);
 
   // Giro automático: nunca se detiene, ni con el logo abierto.
