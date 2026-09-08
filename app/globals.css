@@ -187,6 +187,15 @@ body {
     color 600ms var(--ease-inout);
 }
 
+/* Sin JavaScript el observer nunca revela el contenido, así que lo mostramos. */
+@media (scripting: none) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   [data-reveal] {
     opacity: 1 !important;
