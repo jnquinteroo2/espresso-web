@@ -16,6 +16,11 @@ const NAV_ITEMS: { href: string; label: string; sublabel?: string }[] = [
   { href: "/contacto", label: "Contáctanos" },
 ];
 
+// La X queda justo encima de la hamburguesa. En móvil, con un doble toque
+// rápido el segundo toque cae en la X ~400–800 ms después de abrir. La X
+// ignora los toques durante este tiempo para no cerrar el menú sin querer.
+const CLOSE_GUARD_MS = 1000;
+
 export function NavOverlay({
   open,
   onClose,
@@ -26,7 +31,12 @@ export function NavOverlay({
   returnFocusRef: React.RefObject<HTMLElement | null>;
 }) {
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
+  const openedAtRef = useRef(0);
   const panelId = "nav-overlay-panel";
+
+  useEffect(() => {
+    if (open) openedAtRef.current = performance.now();
+  }, [open]);
 
   useEffect(() => {
     if (!open) return;
@@ -79,6 +89,7 @@ export function NavOverlay({
           <button
             type="button"
             onClick={() => {
+              if (performance.now() - openedAtRef.current < CLOSE_GUARD_MS) return;
               onClose();
               returnFocusRef.current?.focus();
             }}
